@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.system.dependency
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.system.dependency
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.system.dependency; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.xtext.base.dependency;bundle-version="0.0.0",
+ org.eclipse.smartmdsd.xtext.system.componentArchitecture;bundle-version="0.0.0",
+ org.eclipse.smartmdsd.ecore.system.componentArchitecture;bundle-version="0.0.0",
+ org.eclipse.smartmdsd.xtext.system.componentArchitecture.ui;bundle-version="0.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.xtext.system.dependency.dependency.impl,
+ org.xtext.system.dependency.parser.antlr.internal,
+ org.xtext.system.dependency.dependency,
+ org.xtext.system.dependency.serializer,
+ org.xtext.system.dependency.generator,
+ org.xtext.system.dependency.dependency.util,
+ org.xtext.system.dependency.validation,
+ org.xtext.system.dependency.scoping,
+ org.xtext.system.dependency,
+ org.xtext.system.dependency.services,
+ org.xtext.system.dependency.parser.antlr,
+ org.xtext.system.dependency.formatting2
+Import-Package: org.apache.log4j

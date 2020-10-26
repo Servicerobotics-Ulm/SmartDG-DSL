@@ -1,0 +1,6 @@
+CommObjectsRepository DGBasicService version 1 . 0
+{
+	CommObject DGBasicCommObject {
+		data : Int32
+	}
+}

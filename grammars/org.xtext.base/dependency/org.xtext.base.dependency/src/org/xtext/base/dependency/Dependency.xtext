@@ -1,0 +1,115 @@
+//================================================================
+//
+//  Copyright (C) 2017 Vineet Nagrath, Alex Lotz
+//
+//        nagrath@hs-ulm.de		
+//        lotz@hs-ulm.de
+//
+//        Servicerobotik Ulm
+//        Christian Schlegel
+//        Ulm University of Applied Sciences
+//        Prittwitzstr. 10
+//        89075 Ulm
+//        Germany
+//
+//  This file is part of the SmartMDSD Toolchain V3. 
+//
+//================================================================
+grammar org.xtext.base.dependency.Dependency with org.eclipse.xtext.common.Terminals
+
+generate dependency "http://www.xtext.org/base/dependency/Dependency"
+
+Model:
+	(username+=UserName)?
+	(userimport+=UserImport)?
+	(new+=New)*
+	(environments+=Environment)*
+	(systemProjects+=SystemProject)*
+	(componentDevelopments+=ComponentDevelopment)*;
+
+	// New ++
+New:
+	name="new"
+	(object+=DependencyObject)?
+	(component+=DependencyComponent)?
+	(connector+=DependencyConnectors)?
+	location=At;
+
+At:
+	'@' name=STRING;
+
+UserName:
+	'UserName' ':' name=STRING;
+
+UserImport:
+	'import' environment=STRING 'from' boxpath=STRING;
+
+	// Environment ++
+Environment:
+	'Environment' name=ID ('Wiki' ':' wiki=STRING)?
+	'{'
+	(objects+=DependencyObject)*
+	(components+=DependencyComponent)*
+	(connectors+=DependencyConnectors)*
+	(location+=At)+
+	'}';
+
+DependencyObject:
+	'Object' name=STRING ('isMulti' ':' isMulti=STRING)? ('Wiki' ':' wiki=STRING)?;
+
+DependencyComponent:
+	'Component' name=STRING
+	'{'
+	('InputPorts' ':' inputPorts+=DependencyPort (',' inputPorts+=DependencyPort)*)?
+	('OutputPorts' ':' outputPorts+=DependencyPort (',' outputPorts+=DependencyPort)*)?
+	('Wiki' ':' wiki=STRING)?
+	'}';
+
+DependencyPort:
+	name=STRING
+	'[' objinstances+=STRING (',' objinstances+=STRING)* ']';
+
+DependencyConnectors:
+	'Connector' name=STRING
+	'[' objinstances+=STRING (',' objinstances+=STRING)* ']';
+
+	// System Project ++
+SystemProject:
+	'SystemProject' name=ID ('Wiki' ':' wiki=STRING)?
+	'{'
+	'import' environment=STRING 'from' boxpath=STRING
+	(cims+=CIM)*
+	(dependencies+=Dependency)*
+	(gui+=GUI)*
+	(location+=BoxLocation)+
+	'}';
+
+Dependency:
+	'Dependency' name=STRING
+	fn=STRING '.' fp=STRING
+	'--' o=STRING '-->'
+	tn=STRING '.' tp=STRING
+	('Wiki' ':' wiki=STRING)?;
+
+GUI:
+	'GUI' name=STRING '(' x=INT ',' y=INT ')'
+	('Wiki' ':' wiki=STRING)?;
+
+CIM:
+	'CIM' name=STRING 'is' source=STRING;
+
+BoxLocation:
+	'BoxLocation' name=STRING
+	('Import' ':' importflag=STRING)?
+	('Build' ':' buildflag=STRING)?
+	('Launch' ':' launchflag=STRING)?
+	('Detach' ':' detachflag=STRING)?;
+
+	// Component Development ++
+ComponentDevelopment:
+	'ComponentDevelopment' name=ID ('Wiki' ':' wiki=STRING)?
+	'{'
+	'import' environment=STRING 'from' boxpath=STRING
+	'Component' component=STRING
+	(location+=BoxLocation)+
+	'}';

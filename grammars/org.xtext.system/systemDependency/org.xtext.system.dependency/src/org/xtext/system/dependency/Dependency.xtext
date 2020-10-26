@@ -1,0 +1,45 @@
+//================================================================
+//
+//  Copyright (C) 2017 Vineet Nagrath, Alex Lotz
+//
+//        nagrath@hs-ulm.de		
+//        lotz@hs-ulm.de
+//
+//        Servicerobotik Ulm
+//        Christian Schlegel
+//        Ulm University of Applied Sciences
+//        Prittwitzstr. 10
+//        89075 Ulm
+//        Germany
+//
+//  This file is part of the SmartMDSD Toolchain V3. 
+//
+//================================================================
+grammar org.xtext.system.dependency.Dependency with org.eclipse.xtext.common.Terminals
+
+generate dependency "http://www.xtext.org/system/dependency/Dependency"
+
+SystemDependencyObjects:
+	username=UserName
+	userimport=UserImport
+	at=At
+	(dependencies+=Dependency)*
+	(guis+=GUI)*;
+
+UserName:
+	'UserName' ':' name=STRING;
+
+UserImport:
+	'import' environment=STRING 'from' boxpath=STRING;
+
+At:
+	'Save' '@' name=STRING;
+
+Dependency:
+	'Dependency' name=STRING
+	fn=STRING '.' fp=STRING
+	'--' o=STRING '-->'
+	tn=STRING '.' tp=STRING;
+
+GUI:
+	'GUI' name=STRING '(' x=INT ',' y=INT ')';
