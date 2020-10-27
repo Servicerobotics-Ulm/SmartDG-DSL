@@ -7,4 +7,12 @@
 			class = "org.xtext.base.dependency.dependency.DependencyPackage"
 			genModel = "model/generated/Dependency.genmodel" />
 	</extension>
+ <extension
+       id="SmartDG"
+       point="org.eclipse.core.runtime.products">
+    <product
+          application="org.eclipse.ui.ide.workbench"
+          name="SmartDG DSL">
+    </product>
+ </extension>
 </plugin>

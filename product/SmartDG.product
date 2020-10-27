@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="SmartMDSD_Dependency_Graph_Extension" uid="SmartMDSD_Dependency_Graph_Extension" id="org.SmartDG.DSL.view.SmartMDSD_Dependency_Graph_Extension" application="org.eclipse.ui.ide.workbench" version="0.1.0" useFeatures="true" includeLaunchers="true">
+
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+
+   <launcher>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+   <license>
+        <url>http://www.eclipse.org/legal/epl-2.0</url>
+        <text>
+   SPDX-License-Identifier: EPL-2.0
+         </text>
+   </license>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.SmartDG.DSL.feature" installMode="root"/>
+      <feature id="org.eclipse.cdt" installMode="root"/>
+      <feature id="org.eclipse.emf.ecore" installMode="root"/>
+      <feature id="org.eclipse.gmf.runtime.thirdparty" installMode="root"/>
+      <feature id="org.eclipse.smartmdsd" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.dsf" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.build" installMode="root"/>
+      <feature id="org.eclipse.gmf.runtime.notation" installMode="root"/>
+      <feature id="org.eclipse.emf.common" installMode="root"/>
+      <feature id="org.eclipse.gmf" installMode="root"/>
+      <feature id="org.eclipse.sirius.specifier" installMode="root"/>
+      <feature id="org.eclipse.emf.workspace" installMode="root"/>
+      <feature id="org.eclipse.gef" installMode="root"/>
+      <feature id="org.eclipse.cdt.platform" installMode="root"/>
+      <feature id="org.eclipse.smartmdsd.source" installMode="root"/>
+      <feature id="org.eclipse.cdt.native" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.debug" installMode="root"/>
+      <feature id="org.eclipse.draw2d" installMode="root"/>
+      <feature id="org.eclipse.emf.ecore.edit" installMode="root"/>
+      <feature id="org.eclipse.emf.validation" installMode="root"/>
+      <feature id="org.eclipse.emf.edit" installMode="root"/>
+      <feature id="org.eclipse.cdt.gdb" installMode="root"/>
+      <feature id="org.eclipse.emf.transaction" installMode="root"/>
+   </features>
+
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>
