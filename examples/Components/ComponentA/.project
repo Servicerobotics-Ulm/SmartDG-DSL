@@ -3,7 +3,6 @@
 	<name>ComponentA</name>
 	<comment></comment>
 	<projects>
-		<project>CommBasicObjects</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

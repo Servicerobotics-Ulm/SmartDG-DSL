@@ -2,7 +2,8 @@
 <feature
       id="org.SmartDG.DSL.feature"
       label="SmartDG.DSL"
-      version="0.1.0.qualifier">
+      version="0.1.0.qualifier"
+      provider-name="Servicerobotics Ulm, Germany">
 
    <description url="http://www.servicerobotik-ulm.de/">
       Dependency-Graph extensions for SmartMDSD Toolchain.
@@ -16,57 +17,8 @@
       Eclipse Public License v. 2.0 [EPL-2.0]
    </license>
 
-   <includes
-         id="org.eclipse.smartmdsd"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.smartmdsd.source"
-         version="0.0.0"/>
-
    <requires>
-      <import plugin="org.eclipse.xtext.ui"/>
-      <import plugin="org.eclipse.xtext.ui.shared"/>
-      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
-      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.compare"/>
-      <import plugin="org.eclipse.xtext.builder"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="greaterOrEqual"/>
-      <import plugin="org.apache.log4j"/>
-      <import plugin="org.junit.jupiter.api" version="5.0.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.testing"/>
-      <import plugin="org.eclipse.xtext.xbase.testing"/>
-      <import plugin="org.eclipse.xtext"/>
-      <import plugin="org.eclipse.xtext.xbase"/>
-      <import plugin="org.eclipse.equinox.common" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore"/>
-      <import plugin="org.eclipse.xtext.util"/>
-      <import plugin="org.eclipse.emf.common"/>
-      <import plugin="org.eclipse.xtend.lib" version="2.14.0" match="greaterOrEqual"/>
-      <import plugin="org.antlr.runtime" version="3.2.0" match="perfect"/>
-      <import plugin="org.eclipse.smartmdsd.ecore.component.componentDefinition"/>
-      <import plugin="org.eclipse.smartmdsd.ecore.component.componentDependencyGraphExtension"/>
-      <import plugin="org.eclipse.smartmdsd.ecore.system.componentArchitecture"/>
-      <import plugin="org.apache.commons.io"/>
-      <import plugin="org.eclipse.xtext.junit4"/>
-      <import plugin="org.eclipse.xtext.xbase.junit"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.xtext.ui.testing"/>
-      <import plugin="org.eclipse.smartmdsd.xtext.component.componentDefinition.ui"/>
-      <import plugin="org.eclipse.smartmdsd.xtext.system.componentArchitecture"/>
-      <import plugin="org.eclipse.smartmdsd.xtext.system.componentArchitecture.ui"/>
-      <import plugin="org.eclipse.xtext.ide"/>
-      <import plugin="org.eclipse.xtext.xbase.ide"/>
-      <import plugin="javax.inject"/>
-      <import plugin="org.eclipse.osgi"/>
-      <import plugin="org.eclipse.jface"/>
-      <import plugin="org.eclipse.e4.ui.model.workbench"/>
-      <import plugin="org.eclipse.e4.ui.di"/>
-      <import plugin="org.eclipse.e4.ui.services"/>
-      <import plugin="org.eclipse.e4.core.di.annotations"/>
-      <import plugin="javax.annotation"/>
+      <import feature="org.eclipse.smartmdsd" version="3.14.0.202010210926" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -77,21 +29,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.xtext.system.dependency.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.xtext.base.dependency"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.xtext.base.dependency.ui.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -106,20 +44,6 @@
 
    <plugin
          id="org.xtext.system.dependency"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.xtext.base.dependency.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.xtext.system.dependency.ui.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"

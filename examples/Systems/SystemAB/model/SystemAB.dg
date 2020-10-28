@@ -23,4 +23,4 @@ Dependency "CS05" "A1" . "A_Out" --"Privacy"--> "B1" . "B_In"
  
 GUI "A1" (10,10)
 GUI "B1" (80,50)
-GUI "A2" (150,100)         
+GUI "A2" (150,100)           
