@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Automatic-Module-Name: org.xtext.base.dependency.ui
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xtext.base.dependency.ui
-Bundle-Vendor: My Company
+Bundle-Vendor: Servicerobotics Ulm, Germany
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.xtext.base.dependency.ui; singleton:=true
 Bundle-ActivationPolicy: lazy

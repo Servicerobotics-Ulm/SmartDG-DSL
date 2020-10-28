@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_BxaXACerEeWxCPrV0pAZQQ">
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_EI7oACerEeWxCPrV0pAZQQ" featurename="descriptors" parentElementId="xpath:/">
-    <elements xsi:type="basic:PartDescriptor" xmi:id="_KMklcCerEeWxCPrV0pAZQQ" elementId="test.partDescFragment.ASampleE4View" label="SmartDG Console" iconURI="platform:/plugin/org.SmartDG.DSL.view/icons/SmartDGicon.png" tooltip="SmartMDSD Dependency Graph Console View" category="SmartMDSD Views" contributionURI="bundleclass://org.SmartDG.DSL.view/org.smartdg.dsl.view.parts.SmartDGConsoleView">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_KMklcCerEeWxCPrV0pAZQQ" elementId="test.partDescFragment.ASampleE4View" label="SmartDG Console" iconURI="platform:/plugin/org.SmartDG.DSL.consoleMain/icons/SmartDGicon.png" tooltip="SmartMDSD Dependency Graph Console View" category="SmartMDSD Views" contributionURI="bundleclass://org.SmartDG.DSL.consoleMain/org.smartdg.dsl.view.parts.SmartDGConsoleView">
       <tags>View</tags>
       <tags>categoryTag:SmartMDSD Views</tags>
     </elements>

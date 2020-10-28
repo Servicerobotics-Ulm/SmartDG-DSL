@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Automatic-Module-Name: org.xtext.system.dependency
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xtext.system.dependency
-Bundle-Vendor: My Company
+Bundle-Vendor: Servicerobotics Ulm, Germany
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.xtext.system.dependency; singleton:=true
 Bundle-ActivationPolicy: lazy
