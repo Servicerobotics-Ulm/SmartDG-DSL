@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature id="org.SmartDG.DSL.feature">
-      <category name="SmartDG.DSL"/>
+      <category name="SmartDG"/>
    </feature>
-   <category-def name="SmartDG.DSL" label="SmartDG.DSL"/>
+   <category-def name="SmartDG" label="SmartDG"/>
 </site>
