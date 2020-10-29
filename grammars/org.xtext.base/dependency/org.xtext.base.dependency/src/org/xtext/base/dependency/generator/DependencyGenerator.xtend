@@ -54,6 +54,7 @@ import java.util.Vector
 import java.util.Map
 import java.util.HashMap
 import org.xtext.base.dependency.dependency.CIM
+import org.xtext.base.dependency.SmartDGConsole
 
 /**
  * Generates code from your model files on save.
@@ -846,6 +847,13 @@ class DependencyGenerator extends AbstractGenerator {
 	}
 	// All "do", "dg" and "de" model doGenerate methods calls this method after corresponding Resource object setup
 	def doGenerateBase(Resource resourcein) {
+		
+		
+		var SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
+		SmartDGout.println("SmartDG | doGenerateBase | IN");
+		
+		
+		
 		str_SMART_ROOT_ACE = System.getenv("SMART_ROOT_ACE");
 		str_HOME = System.getenv("HOME");
 		if (str_SMART_ROOT_ACE === null) {
