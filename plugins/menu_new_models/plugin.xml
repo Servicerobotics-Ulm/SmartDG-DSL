@@ -8,9 +8,11 @@
             name="SmartDGCommands">
       </category>
       <command
+            categoryId="org.SmartDG.ui.commands"
             defaultHandler="org.smartdg.ui.CreateNewDGModelHandler"
+            description="Creates SmartDG model files with default contents."
             id="org.SmartDG.ui.newDGModel"
-            name="Create New DG Model">
+            name="Create New SmartDG Model">
       </command>
    </extension>
    <extension
@@ -24,10 +26,6 @@
                label="Create new DG Model"
                style="push">
          </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="org.SmartDG.ui.menuContribution3">
       </menuContribution>
    </extension>
 

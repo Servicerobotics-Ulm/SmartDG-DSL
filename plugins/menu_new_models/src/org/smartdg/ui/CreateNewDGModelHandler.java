@@ -1,5 +1,9 @@
 package org.smartdg.ui;
 
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -7,41 +11,91 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.xtext.base.dependency.SmartDGdefaultModels;
 
 public class CreateNewDGModelHandler extends AbstractHandler {
 	public IResource getSelectedResource(IWorkbenchWindow window) {
 		ISelection selection = window.getSelectionService().getSelection();
-		if(selection instanceof IStructuredSelection) {
-			IStructuredSelection structuredSelection = (IStructuredSelection)selection;
+		if (selection instanceof IStructuredSelection) {
+			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			Object firstElement = structuredSelection.getFirstElement();
-			if(firstElement instanceof IResource) {
-				return (IResource)firstElement;
-			} else if(firstElement instanceof IProjectNature) {
-				IProjectNature projNature = (IProjectNature)firstElement;
+			if (firstElement instanceof IResource) {
+				return (IResource) firstElement;
+			} else if (firstElement instanceof IProjectNature) {
+				IProjectNature projNature = (IProjectNature) firstElement;
 				return projNature.getProject();
 			}
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		IResource resource = getSelectedResource(window);
 		IProject project = resource.getProject();
-		MessageDialog.openInformation(window.getShell(), "Hello", "Current project is "+project.getName());
-		
-		IFile file = project.getFile("model/somefile.txt");
-		if(!file.exists()) {
-			//file.create(source, force, monitor);
-			// https://www.eclipse.org/articles/Article-Concurrency/jobs-api.html
+
+		boolean yescreate = MessageDialog.openConfirm(window.getShell(), "SmartDG",
+				"Do you want to create SmartDG model files with default contents for project \n" + project.getName());
+
+		if (yescreate) {
+			List<String> ModelTypes = new ArrayList<>();
+			List<String> ModelTypesWiki = new ArrayList<>();
+			List<String> ModelTypesDefaultContents = new ArrayList<>();
+
+			ModelTypes.add("DE"); // SmartDG Environment Model
+			ModelTypesWiki.add("SmartDG Environment Model");
+			ModelTypesDefaultContents.add("");
+
+			String componentmodelfilename = "model/" + project.getName() + ".component";
+			IFile componentmodelfile = project.getFile(componentmodelfilename);
+			if (componentmodelfile.exists()) {
+				ModelTypes.add("DO"); // SmartDG Component Model
+				ModelTypesWiki.add("SmartDG Component Model");
+				ModelTypesDefaultContents.add(SmartDGdefaultModels.doDefault());
+			}
+
+			String systemmodelfilename = "model/" + project.getName() + ".componentArch";
+			IFile systemmodelfile = project.getFile(systemmodelfilename);
+			if (systemmodelfile.exists()) {
+				ModelTypes.add("DG"); // SmartDG System Model
+				ModelTypesWiki.add("SmartDG System Model");
+				ModelTypesDefaultContents.add(SmartDGdefaultModels.dgDefault());
+			}
+			for (int i = 0; i < ModelTypes.size(); i++) {
+				System.out.println(ModelTypes.get(i));
+			}
+			for (int i = 0; i < ModelTypes.size(); i++) {
+				String ModelType = ModelTypes.get(i);
+				String ModelTypeWiki = ModelTypesWiki.get(i);
+				String ModelTypeDefaultContents = ModelTypesDefaultContents.get(i);
+
+				boolean yesoverwrite = false;
+				String modelfilename = "model/" + project.getName() + "." + ModelType.toLowerCase();
+				IFile file = project.getFile(modelfilename);
+				if (file.exists()) {
+					yesoverwrite = MessageDialog.openConfirm(window.getShell(), "SmartDG", "Overwrite existing "
+							+ ModelTypeWiki + " " + modelfilename + " in " + project.getName() + " ?");
+				}
+				if (!file.exists() || yesoverwrite) {
+					try {
+						if (file.exists())
+							file.delete(true, null);
+						file.create(new ByteArrayInputStream((ModelTypeDefaultContents).getBytes()), true, null);
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					MessageDialog.openInformation(window.getShell(), "SmartDG",
+							ModelTypeWiki + " " + modelfilename + " was created.");
+				}
+			}
 		}
-		
 		return null;
 	}
 }
