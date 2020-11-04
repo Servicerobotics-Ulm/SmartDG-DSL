@@ -30,6 +30,7 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.io.FileUtils;
 
 public class SmartDGComponentDevelopmentHandler {
+	SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
 	public String ComponentDevelopmentFileLocation;
 	public String ComponentDevelopmentFileName;
 	public static final String extension = "dgcom";
@@ -73,12 +74,12 @@ public class SmartDGComponentDevelopmentHandler {
 		File directory = new File(ComponentDevelopmentFileLocation);
 		if (!directory.exists()) {
 			directory.mkdirs();
-			System.out.print(" [New Directory created: " + directory + "]");
+			SmartDGout.print(" [New Directory created: " + directory + "]");
 		}
 		File directorysrcgen = new File(ComponentDevelopmentFileLocation + "/src-gen");
 		if (!directorysrcgen.exists()) {
 			directorysrcgen.mkdirs();
-			System.out.println(" [New Directory created: " + directorysrcgen + "]");
+			SmartDGout.println(" [New Directory created: " + directorysrcgen + "]");
 		}
 		ComponentDevelopmentFileName = filename;
 		Target = ComponentDevelopmentFileLocation + "/" + ComponentDevelopmentFileName + "." + extension;
@@ -86,23 +87,23 @@ public class SmartDGComponentDevelopmentHandler {
 	}
 
 	public void Display() {
-		System.out.println("DGComponentDevelopment: " + DGComponentDevelopment.Name);
-		System.out.println("Environment           : " + DGComponentDevelopment.Environment);
-		System.out.println("EnvironmentBoxLocation: " + DGComponentDevelopment.EnvironmentBoxLocation);
-		System.out.println("FunctionsBoxLocation  : " + DGComponentDevelopment.FunctionsBoxLocation);
-		System.out.println("Wiki: " + DGComponentDevelopment.Wiki);
-		System.out.println("DGComponentDevelopment.DGComponent: " + DGComponentDevelopment.DGComponent.Name);
-		System.out.print("                InputPorts:");
+		SmartDGout.println("DGComponentDevelopment: " + DGComponentDevelopment.Name);
+		SmartDGout.println("Environment           : " + DGComponentDevelopment.Environment);
+		SmartDGout.println("EnvironmentBoxLocation: " + DGComponentDevelopment.EnvironmentBoxLocation);
+		SmartDGout.println("FunctionsBoxLocation  : " + DGComponentDevelopment.FunctionsBoxLocation);
+		SmartDGout.println("Wiki: " + DGComponentDevelopment.Wiki);
+		SmartDGout.println("DGComponentDevelopment.DGComponent: " + DGComponentDevelopment.DGComponent.Name);
+		SmartDGout.print("                InputPorts:");
 		for (int j = 0; j < DGComponentDevelopment.DGComponent.InputPorts.size(); j++)
-			System.out.print("\t" + DGComponentDevelopment.DGComponent.InputPorts.get(j).Name);
-		System.out.println(" ");
-		System.out.print("                OutputPorts:");
+			SmartDGout.print("\t" + DGComponentDevelopment.DGComponent.InputPorts.get(j).Name);
+		SmartDGout.println(" ");
+		SmartDGout.print("                OutputPorts:");
 		for (int j = 0; j < DGComponentDevelopment.DGComponent.OutputPorts.size(); j++)
-			System.out.print("\t" + DGComponentDevelopment.DGComponent.OutputPorts.get(j).Name);
-		System.out.println(" ");
-		System.out.println("                     Wiki:" + DGComponentDevelopment.DGComponent.Wiki);
+			SmartDGout.print("\t" + DGComponentDevelopment.DGComponent.OutputPorts.get(j).Name);
+		SmartDGout.println(" ");
+		SmartDGout.println("                     Wiki:" + DGComponentDevelopment.DGComponent.Wiki);
 		for (int i = 0; i < DGComponentDevelopment.BoxLocations.size(); i++)
-			System.out.println(
+			SmartDGout.println(
 					"DGComponentDevelopment.BoxLocations: \"" + DGComponentDevelopment.BoxLocations.get(i) + "\"");
 	}
 
@@ -162,7 +163,7 @@ public class SmartDGComponentDevelopmentHandler {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			DGComponentDevelopment = (SmartDGComponentDevelopment) jaxbUnmarshaller.unmarshal(TargetFile);
 		} catch (JAXBException e) {
-			System.out.println("ERROR @ SmartDGComponentDevelopment Read:" + Target);
+			SmartDGout.println("ERROR @ SmartDGComponentDevelopment Read:" + Target);
 			return false;
 		}
 		return true;
@@ -212,37 +213,37 @@ public class SmartDGComponentDevelopmentHandler {
 				e.printStackTrace();
 			}
 		} catch (JAXBException e) {
-			System.out.println("ERROR @ SmartDGComponentDevelopment Save:" + Target);
+			SmartDGout.println("ERROR @ SmartDGComponentDevelopment Save:" + Target);
 			e.printStackTrace();
 			return false;
 		}
 		if (importflag) {
 			if (Import()) {
-				System.out.println("IMPORT OK");
+				SmartDGout.println("IMPORT OK");
 			} else {
-				System.out.println("ERROR @ IMPORT");
+				SmartDGout.println("ERROR @ IMPORT");
 				return false;
 			}
 		} else
-			System.out.println("IMPORT SKIPPED");
+			SmartDGout.println("IMPORT SKIPPED");
 		if (buildflag) {
 			if (Build()) {
-				System.out.println("BUILD OK");
+				SmartDGout.println("BUILD OK");
 			} else {
-				System.out.println("ERROR @ BUILD");
+				SmartDGout.println("ERROR @ BUILD");
 				return false;
 			}
 		} else
-			System.out.println("BUILD SKIPPED");
+			SmartDGout.println("BUILD SKIPPED");
 		if (launchflag) {
 			if (Launch(!detachflag)) {
-				System.out.println("LAUNCH OK");
+				SmartDGout.println("LAUNCH OK");
 			} else {
-				System.out.println("ERROR @ LAUNCH");
+				SmartDGout.println("ERROR @ LAUNCH");
 				return false;
 			}
 		} else
-			System.out.println("LAUNCH SKIPPED");
+			SmartDGout.println("LAUNCH SKIPPED");
 		return true;
 	}
 
@@ -252,9 +253,9 @@ public class SmartDGComponentDevelopmentHandler {
 		SmartDGEnvironmentHandler tmpEH = new SmartDGEnvironmentHandler();
 		String envpath = tmpEH.gengetEnvironmentFileLocation(envbox, envnam);
 		String propath = ComponentDevelopmentFileLocation;
-		System.out.println("IMPORTING: FROM Environment:\"" + envnam + "\" AT \"" + envbox + "\" TO \""
+		SmartDGout.println("IMPORTING: FROM Environment:\"" + envnam + "\" AT \"" + envbox + "\" TO \""
 				+ CurrentBoxLocation + "\"");
-		System.out.println("IMPORTING: ORIGIN:\"" + envpath + "\"");
+		SmartDGout.println("IMPORTING: ORIGIN:\"" + envpath + "\"");
 
 		File sourcegen = new File(envpath + "/src-gen");
 		File source = new File(envpath + "/src");
@@ -271,16 +272,16 @@ public class SmartDGComponentDevelopmentHandler {
 
 	public boolean Build() {
 		String builditscriptpath = ComponentDevelopmentFileLocation + "/buildit.sh";
-		System.out.println("BUILDING: " + builditscriptpath);
+		SmartDGout.println("BUILDING: " + builditscriptpath);
 		boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 		if (isWindows) {
-			System.out.println("Automated Build not supported for Windows !!");
+			SmartDGout.println("Automated Build not supported for Windows !!");
 		} else {
 			try {
 				String command = "cd " + ComponentDevelopmentFileLocation + "; bash buildit.sh";
-				System.out.println("COMMAND: " + command);
+				SmartDGout.println("COMMAND: " + command);
 				String[] cmd = { "/bin/sh", "-c", command };
-				System.out.print("BUILDING: ");
+				SmartDGout.print("BUILDING: ");
 				Process process = Runtime.getRuntime().exec(cmd);
 				while (process.isAlive()) {
 					try {
@@ -289,9 +290,9 @@ public class SmartDGComponentDevelopmentHandler {
 						e.printStackTrace();
 						return false;
 					}
-					System.out.print("|");
+					SmartDGout.print("|");
 				}
-				System.out.println(" Done !");
+				SmartDGout.println(" Done !");
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;
@@ -307,16 +308,16 @@ public class SmartDGComponentDevelopmentHandler {
 	public boolean Launch(boolean hold) {
 		String launchpath = CurrentBoxLocation + "/SmartDGbox/SmartDG_Assortment/ComponentDevelopment/"
 				+ ComponentDevelopmentFileName;
-		System.out.println("LAUNCHING: " + launchpath);
+		SmartDGout.println("LAUNCHING: " + launchpath);
 		boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 		if (isWindows) {
-			System.out.println("Automated Launch not supported for Windows !!");
+			SmartDGout.println("Automated Launch not supported for Windows !!");
 		} else {
 			try {
 				String command = launchpath;
-				System.out.println("COMMAND: " + command);
+				SmartDGout.println("COMMAND: " + command);
 				String[] cmd = { "/bin/sh", "-c", command };
-				System.out.print("LAUNCHED: ");
+				SmartDGout.print("LAUNCHED: ");
 				Process process = Runtime.getRuntime().exec(cmd);
 				while (process.isAlive() && hold) {
 					try {
@@ -325,9 +326,9 @@ public class SmartDGComponentDevelopmentHandler {
 						e.printStackTrace();
 						return false;
 					}
-					System.out.print("|");
+					SmartDGout.print("|");
 				}
-				System.out.println(" Done !");
+				SmartDGout.println(" Done !");
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;

@@ -36,6 +36,7 @@ public class SmartDGEnvironmentHandler {
 	// #TODO Feature to import more than one Environments
 	// #TODO TF like import for Solvers
 
+	SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
 	public String EnvironmentFileLocation;
 	public String EnvironmentFileName;
 	public static final String extension = "dgenv";
@@ -65,17 +66,17 @@ public class SmartDGEnvironmentHandler {
 		File directory = new File(EnvironmentFileLocation);
 		if (!directory.exists()) {
 			directory.mkdirs();
-			System.out.println(" [New Directory created: " + directory + "]");
+			SmartDGout.println(" [New Directory created: " + directory + "]");
 		}
 		File directorysrcgen = new File(EnvironmentFileLocation + "/src-gen");
 		if (!directorysrcgen.exists()) {
 			directorysrcgen.mkdirs();
-			System.out.println(" [New Directory created: " + directorysrcgen + "]");
+			SmartDGout.println(" [New Directory created: " + directorysrcgen + "]");
 		}
 		File directorysrc = new File(EnvironmentFileLocation + "/src");
 		if (!directorysrc.exists()) {
 			directorysrc.mkdirs();
-			System.out.println(" [New Directory created: " + directorysrc + "]");
+			SmartDGout.println(" [New Directory created: " + directorysrc + "]");
 		}
 		EnvironmentFileName = filename;
 		Target = EnvironmentFileLocation + "/" + EnvironmentFileName + "." + extension;
@@ -83,41 +84,41 @@ public class SmartDGEnvironmentHandler {
 	}
 
 	public void Display() {
-		System.out.println("DGEnvironment: " + DGEnvironment.Name);
-		System.out.println("Wiki: " + DGEnvironment.Wiki);
+		SmartDGout.println("DGEnvironment: " + DGEnvironment.Name);
+		SmartDGout.println("Wiki: " + DGEnvironment.Wiki);
 		for (int i = 0; i < DGEnvironment.DGObjects.size(); i++)
-			System.out.println("DGEnvironment.DGObject: " + DGEnvironment.DGObjects.get(i).Name + " "
+			SmartDGout.println("DGEnvironment.DGObject: " + DGEnvironment.DGObjects.get(i).Name + " "
 					+ DGEnvironment.DGObjects.get(i).Type + " " + DGEnvironment.DGObjects.get(i).isMulti + " Wiki:"
 					+ DGEnvironment.DGObjects.get(i).Wiki);
 		for (int i = 0; i < DGEnvironment.DGComponents.size(); i++) {
-			System.out.println("DGEnvironment.DGComponents: " + DGEnvironment.DGComponents.get(i).Name);
+			SmartDGout.println("DGEnvironment.DGComponents: " + DGEnvironment.DGComponents.get(i).Name);
 			for (int j = 0; j < DGEnvironment.DGComponents.get(i).InputPorts.size(); j++) {
-				System.out.print("                InputPort:");
-				System.out.print("\t" + DGEnvironment.DGComponents.get(i).InputPorts.get(j).Name);
+				SmartDGout.print("                InputPort:");
+				SmartDGout.print("\t" + DGEnvironment.DGComponents.get(i).InputPorts.get(j).Name);
 				for (String dos : DGEnvironment.DGComponents.get(i).InputPorts.get(j).DGObjectCandidates)
-					System.out.print("  [" + dos + "]");
-				System.out.println("");
+					SmartDGout.print("  [" + dos + "]");
+				SmartDGout.println("");
 			}
-			System.out.println(" ");
+			SmartDGout.println(" ");
 			for (int j = 0; j < DGEnvironment.DGComponents.get(i).OutputPorts.size(); j++) {
-				System.out.print("                OutputPort:");
-				System.out.print("\t" + DGEnvironment.DGComponents.get(i).OutputPorts.get(j).Name);
+				SmartDGout.print("                OutputPort:");
+				SmartDGout.print("\t" + DGEnvironment.DGComponents.get(i).OutputPorts.get(j).Name);
 				for (String dos : DGEnvironment.DGComponents.get(i).OutputPorts.get(j).DGObjectCandidates)
-					System.out.print("  [" + dos + "]");
-				System.out.println("");
+					SmartDGout.print("  [" + dos + "]");
+				SmartDGout.println("");
 			}
-			System.out.println(" ");
-			System.out.println("                     Wiki:" + DGEnvironment.DGComponents.get(i).Wiki);
+			SmartDGout.println(" ");
+			SmartDGout.println("                     Wiki:" + DGEnvironment.DGComponents.get(i).Wiki);
 		}
 		for (int i = 0; i < DGEnvironment.DGConnectors.size(); i++) {
-			System.out.print("DGEnvironment.DGConnectors: \"" + DGEnvironment.DGConnectors.get(i).Name + "\"");
+			SmartDGout.print("DGEnvironment.DGConnectors: \"" + DGEnvironment.DGConnectors.get(i).Name + "\"");
 			for (int j = 0; j < DGEnvironment.DGConnectors.get(i).DGObjectCandidates.size(); j++) {
-				System.out.print("  [ \"" + DGEnvironment.DGConnectors.get(i).DGObjectCandidates.get(j) + "\" ]");
+				SmartDGout.print("  [ \"" + DGEnvironment.DGConnectors.get(i).DGObjectCandidates.get(j) + "\" ]");
 			}
-			System.out.println("");
+			SmartDGout.println("");
 		}
 		for (int i = 0; i < DGEnvironment.BoxLocations.size(); i++)
-			System.out.println("DGEnvironment.BoxLocations: \"" + DGEnvironment.BoxLocations.get(i) + "\"");
+			SmartDGout.println("DGEnvironment.BoxLocations: \"" + DGEnvironment.BoxLocations.get(i) + "\"");
 	}
 
 	public void Fill(SmartDGEnvironment e) {
@@ -135,47 +136,47 @@ public class SmartDGEnvironmentHandler {
 	}
 
 	public void DisplayComponent(SmartDGComponent c) {
-		System.out.println(c.Name);
-		System.out.println("InputPorts: ");
+		SmartDGout.println(c.Name);
+		SmartDGout.println("InputPorts: ");
 		for (int porti = 0; porti < c.InputPorts.size(); porti++) {
-			System.out.print(c.InputPorts.get(porti).Name + " : ");
+			SmartDGout.print(c.InputPorts.get(porti).Name + " : ");
 			for (int obji = 0; obji < c.InputPorts.get(porti).DGObjectCandidates.size(); obji++) {
-				System.out.print("	" + c.InputPorts.get(porti).DGObjectCandidates.get(obji));
+				SmartDGout.print("	" + c.InputPorts.get(porti).DGObjectCandidates.get(obji));
 			}
-			System.out.println("");
+			SmartDGout.println("");
 		}
-		System.out.println("OutputPorts: ");
+		SmartDGout.println("OutputPorts: ");
 		for (int porti = 0; porti < c.OutputPorts.size(); porti++) {
-			System.out.print(c.OutputPorts.get(porti).Name + " : ");
+			SmartDGout.print(c.OutputPorts.get(porti).Name + " : ");
 			for (int obji = 0; obji < c.OutputPorts.get(porti).DGObjectCandidates.size(); obji++) {
-				System.out.print("	" + c.OutputPorts.get(porti).DGObjectCandidates.get(obji));
+				SmartDGout.print("	" + c.OutputPorts.get(porti).DGObjectCandidates.get(obji));
 			}
-			System.out.println("");
+			SmartDGout.println("");
 		}
-		System.out.println("");
+		SmartDGout.println("");
 	}
 
 	public void FillCheck(SmartDGComponent c) {
 		for (int i = 0; i < DGEnvironment.DGComponents.size(); i++) {
 			if (c.Name.equals(DGEnvironment.DGComponents.get(i).Name)) {
-				System.out.println("");
-				System.out.print("=|==|==|==|==|==XXXX Component " + c.Name + " already present in the environment ");
-				System.out.println("\"" + EnvironmentFileName + "\" @ " + EnvironmentFileLocation + "!!");
-				System.out.println("Replacing existing component " + c.Name + " from \"" + EnvironmentFileName + "\" @ "
+				SmartDGout.println("");
+				SmartDGout.print("=|==|==|==|==|==XXXX Component " + c.Name + " already present in the environment ");
+				SmartDGout.println("\"" + EnvironmentFileName + "\" @ " + EnvironmentFileLocation + "!!");
+				SmartDGout.println("Replacing existing component " + c.Name + " from \"" + EnvironmentFileName + "\" @ "
 						+ EnvironmentFileLocation + "!!");
-				System.out.println("Old:");
+				SmartDGout.println("Old:");
 				DisplayComponent(DGEnvironment.DGComponents.get(i));
 				DGEnvironment.DGComponents.set(i, c);
-				System.out.println("New:");
+				SmartDGout.println("New:");
 				DisplayComponent(DGEnvironment.DGComponents.get(i));
 				return;
 			}
 		}
-		System.out.println("");
-		System.out.println("Adding new component " + c.Name + " to \"" + EnvironmentFileName + "\" @ "
+		SmartDGout.println("");
+		SmartDGout.println("Adding new component " + c.Name + " to \"" + EnvironmentFileName + "\" @ "
 				+ EnvironmentFileLocation + "!!");
 		DGEnvironment.DGComponents.add(c);
-		System.out.println("New:");
+		SmartDGout.println("New:");
 		DisplayComponent(c);
 
 	}
@@ -313,8 +314,8 @@ public class SmartDGEnvironmentHandler {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			DGEnvironment = (SmartDGEnvironment) jaxbUnmarshaller.unmarshal(TargetFile);
 		} catch (JAXBException e) {
-			System.out.println("ERROR @ SmartDGEnvironment Read:" + Target);
-			System.out.println(
+			SmartDGout.println("ERROR @ SmartDGEnvironment Read:" + Target);
+			SmartDGout.println(
 					"ERROR @ IGNORE above message when UserName is mentioned for the first time in the model.");
 			return false;
 		}
@@ -346,7 +347,7 @@ public class SmartDGEnvironmentHandler {
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(DGEnvironment, TargetFile);
-			System.out.println("SAVED | " + EnvironmentFileName + " XML dgenv File @ " + EnvironmentFileLocation);
+			SmartDGout.println("SAVED | " + EnvironmentFileName + " XML dgenv File @ " + EnvironmentFileLocation);
 			// Environment Header File
 			try {
 				PrintWriter srcouth;
@@ -354,7 +355,7 @@ public class SmartDGEnvironmentHandler {
 						EnvironmentFileLocation + "/src-gen/SmartDGEnvironment_" + EnvironmentFileName + ".h");
 				srcouth.println(Gene.gen(DGEnvironment));
 				srcouth.close();
-				System.out.println(
+				SmartDGout.println(
 						"SAVED | " + EnvironmentFileName + " Header File @ " + EnvironmentFileLocation + "/src-gen/");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -367,41 +368,41 @@ public class SmartDGEnvironmentHandler {
 							+ DGEnvironment.DGComponents.get(i).Name + ".h");
 					srcout_tf.println(Gene.gen(DGEnvironment.DGComponents.get(i)));
 					srcout_tf.close();
-					System.out.println("SAVED | " + DGEnvironment.DGComponents.get(i).Name + " Header File @ "
+					SmartDGout.println("SAVED | " + DGEnvironment.DGComponents.get(i).Name + " Header File @ "
 							+ EnvironmentFileLocation + "/src-gen/");
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
 			}
 		} catch (JAXBException e) {
-			System.out.println("ERROR @ SmartDGEnvironment Save:" + Target);
+			SmartDGout.println("ERROR @ SmartDGEnvironment Save:" + Target);
 			e.printStackTrace();
 			return false;
 		}
-		System.out.println("SAVED | " + EnvironmentFileName + " ALL OK @ " + EnvironmentFileLocation);
+		SmartDGout.println("SAVED | " + EnvironmentFileName + " ALL OK @ " + EnvironmentFileLocation);
 		return true;
 	}
 
 	public boolean importSrc(String SrcEnvironmentFileLocation, String SrcEnvironmentFileName) {
-		System.out.println("IMPORTING | \"src\" folder contents");
+		SmartDGout.println("IMPORTING | \"src\" folder contents");
 		File source = new File(SrcEnvironmentFileLocation + "/src/");
 		File destgen = new File(EnvironmentFileLocation + "/src/");
 		try {
 			FileUtils.copyDirectory(source, destgen);
 		} catch (IOException e) {
-			System.out.println("IMPORTED | ERROR copyDirectory ");
-			System.out.println(
+			SmartDGout.println("IMPORTED | ERROR copyDirectory ");
+			SmartDGout.println(
 					"IMPORTED | from " + SrcEnvironmentFileName + " @ " + SrcEnvironmentFileLocation + "/src/");
-			System.out.println("IMPORTED | to   " + EnvironmentFileName + " @ " + EnvironmentFileLocation + "/src/");
+			SmartDGout.println("IMPORTED | to   " + EnvironmentFileName + " @ " + EnvironmentFileLocation + "/src/");
 
 			return false;
 		}
 		File[] fileList = destgen.listFiles();
 		for (File file : fileList) {
-			System.out.println("IMPORTED | " + file.getName());
+			SmartDGout.println("IMPORTED | " + file.getName());
 		}
-		System.out.println("IMPORTED | from " + SrcEnvironmentFileName + " @ " + SrcEnvironmentFileLocation + "/src/");
-		System.out.println("IMPORTED | to   " + EnvironmentFileName + " @ " + EnvironmentFileLocation + "/src/");
+		SmartDGout.println("IMPORTED | from " + SrcEnvironmentFileName + " @ " + SrcEnvironmentFileLocation + "/src/");
+		SmartDGout.println("IMPORTED | to   " + EnvironmentFileName + " @ " + EnvironmentFileLocation + "/src/");
 		return true;
 	}
 }

@@ -29,6 +29,7 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.io.FileUtils;
 
 public class SmartDGSystemProjectHandler {
+	SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
 	public String SystemProjectFileLocation;
 	public String SystemProjectFileName;
 	public static final String extension = "dgsys";
@@ -72,12 +73,12 @@ public class SmartDGSystemProjectHandler {
 		File directory = new File(SystemProjectFileLocation);
 		if (!directory.exists()) {
 			directory.mkdirs();
-			System.out.print(" [New Directory created: " + directory + "]");
+			SmartDGout.print(" [New Directory created: " + directory + "]");
 		}
 		File directorysrcgen = new File(SystemProjectFileLocation + "/src-gen");
 		if (!directorysrcgen.exists()) {
 			directorysrcgen.mkdirs();
-			System.out.println(" [New Directory created: " + directorysrcgen + "]");
+			SmartDGout.println(" [New Directory created: " + directorysrcgen + "]");
 		}
 		SystemProjectFileName = filename;
 		Target = SystemProjectFileLocation + "/" + SystemProjectFileName + "." + extension;
@@ -85,21 +86,21 @@ public class SmartDGSystemProjectHandler {
 	}
 
 	public void Display() {
-		System.out.println("DGSystemProject       : " + DGSystemProject.Name);
-		System.out.println("Environment           : " + DGSystemProject.Environment);
-		System.out.println("EnvironmentBoxLocation: " + DGSystemProject.EnvironmentBoxLocation);
-		System.out.println("Wiki: " + DGSystemProject.Wiki);
+		SmartDGout.println("DGSystemProject       : " + DGSystemProject.Name);
+		SmartDGout.println("Environment           : " + DGSystemProject.Environment);
+		SmartDGout.println("EnvironmentBoxLocation: " + DGSystemProject.EnvironmentBoxLocation);
+		SmartDGout.println("Wiki: " + DGSystemProject.Wiki);
 		for (int i = 0; i < DGSystemProject.DGDependency.size(); i++)
-			System.out.println("DGSystemProject.DGDependency: " + DGSystemProject.DGDependency.get(i).Name + " "
+			SmartDGout.println("DGSystemProject.DGDependency: " + DGSystemProject.DGDependency.get(i).Name + " "
 					+ DGSystemProject.DGDependency.get(i).OutputNode + "."
 					+ DGSystemProject.DGDependency.get(i).OutputPort + "--" + DGSystemProject.DGDependency.get(i).Object
 					+ "-->" + DGSystemProject.DGDependency.get(i).InputNode + "."
 					+ DGSystemProject.DGDependency.get(i).InputPort);
 		for (int i = 0; i < DGSystemProject.DGGUI.size(); i++)
-			System.out.println("DGSystemProject.DGGUI: " + DGSystemProject.DGGUI.get(i).Name + " ("
+			SmartDGout.println("DGSystemProject.DGGUI: " + DGSystemProject.DGGUI.get(i).Name + " ("
 					+ DGSystemProject.DGGUI.get(i).x + ", " + DGSystemProject.DGGUI.get(i).y + ")");
 		for (int i = 0; i < DGSystemProject.BoxLocations.size(); i++)
-			System.out.println("DGSystemProject.BoxLocations: \"" + DGSystemProject.BoxLocations.get(i) + "\"");
+			SmartDGout.println("DGSystemProject.BoxLocations: \"" + DGSystemProject.BoxLocations.get(i) + "\"");
 	}
 
 	public void Fill(SmartDGSystemProject e) {
@@ -133,7 +134,7 @@ public class SmartDGSystemProjectHandler {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			DGSystemProject = (SmartDGSystemProject) jaxbUnmarshaller.unmarshal(TargetFile);
 		} catch (JAXBException e) {
-			System.out.println("ERROR @ SmartDGSystemProject Read:" + Target);
+			SmartDGout.println("ERROR @ SmartDGSystemProject Read:" + Target);
 			return false;
 		}
 		return true;
@@ -182,37 +183,37 @@ public class SmartDGSystemProjectHandler {
 				e.printStackTrace();
 			}
 		} catch (JAXBException e) {
-			System.out.println("ERROR @ SmartDGSystemProject Save:" + Target);
+			SmartDGout.println("ERROR @ SmartDGSystemProject Save:" + Target);
 			e.printStackTrace();
 			return false;
 		}
 		if (importflag) {
 			if (Import()) {
-				System.out.println("IMPORT OK");
+				SmartDGout.println("IMPORT OK");
 			} else {
-				System.out.println("ERROR @ IMPORT");
+				SmartDGout.println("ERROR @ IMPORT");
 				return false;
 			}
 		} else
-			System.out.println("IMPORT SKIPPED");
+			SmartDGout.println("IMPORT SKIPPED");
 		if (buildflag) {
 			if (Build()) {
-				System.out.println("BUILD OK");
+				SmartDGout.println("BUILD OK");
 			} else {
-				System.out.println("ERROR @ BUILD");
+				SmartDGout.println("ERROR @ BUILD");
 				return false;
 			}
 		} else
-			System.out.println("BUILD SKIPPED");
+			SmartDGout.println("BUILD SKIPPED");
 		if (launchflag) {
 			if (Launch(!detachflag)) {
-				System.out.println("LAUNCH OK");
+				SmartDGout.println("LAUNCH OK");
 			} else {
-				System.out.println("ERROR @ LAUNCH");
+				SmartDGout.println("ERROR @ LAUNCH");
 				return false;
 			}
 		} else
-			System.out.println("LAUNCH SKIPPED");
+			SmartDGout.println("LAUNCH SKIPPED");
 		return true;
 	}
 
@@ -222,9 +223,9 @@ public class SmartDGSystemProjectHandler {
 		SmartDGEnvironmentHandler tmpEH = new SmartDGEnvironmentHandler();
 		String envpath = tmpEH.gengetEnvironmentFileLocation(envbox, envnam);
 		String propath = SystemProjectFileLocation;
-		System.out.println("IMPORTING: FROM Environment:\"" + envnam + "\" AT \"" + envbox + "\" TO \""
+		SmartDGout.println("IMPORTING: FROM Environment:\"" + envnam + "\" AT \"" + envbox + "\" TO \""
 				+ CurrentBoxLocation + "\"");
-		System.out.println("IMPORTING: ORIGIN:\"" + envpath + "\"");
+		SmartDGout.println("IMPORTING: ORIGIN:\"" + envpath + "\"");
 
 		File sourcegen = new File(envpath + "/src-gen");
 		File source = new File(envpath + "/src");
@@ -241,16 +242,16 @@ public class SmartDGSystemProjectHandler {
 
 	public boolean Build() {
 		String builditscriptpath = SystemProjectFileLocation + "/buildit.sh";
-		System.out.println("BUILDING: " + builditscriptpath);
+		SmartDGout.println("BUILDING: " + builditscriptpath);
 		boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 		if (isWindows) {
-			System.out.println("Automated Build not supported for Windows !!");
+			SmartDGout.println("Automated Build not supported for Windows !!");
 		} else {
 			try {
 				String command = "cd " + SystemProjectFileLocation + "; bash buildit.sh";
-				System.out.println("COMMAND: " + command);
+				SmartDGout.println("COMMAND: " + command);
 				String[] cmd = { "/bin/sh", "-c", command };
-				System.out.print("BUILDING: ");
+				SmartDGout.print("BUILDING: ");
 				Process process = Runtime.getRuntime().exec(cmd);
 				while (process.isAlive()) {
 					try {
@@ -259,9 +260,9 @@ public class SmartDGSystemProjectHandler {
 						e.printStackTrace();
 						return false;
 					}
-					System.out.print("|");
+					SmartDGout.print("|");
 				}
-				System.out.println(" Done !");
+				SmartDGout.println(" Done !");
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;
@@ -276,16 +277,16 @@ public class SmartDGSystemProjectHandler {
 
 	public boolean Launch(boolean hold) {
 		String launchpath = CurrentBoxLocation + "/SmartDGbox/SmartDG_Assortment/Systems/" + SystemProjectFileName;
-		System.out.println("LAUNCHING: " + launchpath);
+		SmartDGout.println("LAUNCHING: " + launchpath);
 		boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 		if (isWindows) {
-			System.out.println("Automated Launch not supported for Windows !!");
+			SmartDGout.println("Automated Launch not supported for Windows !!");
 		} else {
 			try {
 				String command = launchpath;
-				System.out.println("COMMAND: " + command);
+				SmartDGout.println("COMMAND: " + command);
 				String[] cmd = { "/bin/sh", "-c", command };
-				System.out.print("LAUNCHED: ");
+				SmartDGout.print("LAUNCHED: ");
 				Process process = Runtime.getRuntime().exec(cmd);
 				while (process.isAlive() && hold) {
 					try {
@@ -294,9 +295,9 @@ public class SmartDGSystemProjectHandler {
 						e.printStackTrace();
 						return false;
 					}
-					System.out.print("|");
+					SmartDGout.print("|");
 				}
-				System.out.println(" Done !");
+				SmartDGout.println(" Done !");
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;

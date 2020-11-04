@@ -12,6 +12,9 @@ public class SmartDGConsole {
 	private MessageConsole console = null;
 	private MessageConsoleStream out = null;
 
+	public boolean PRINT_ON_SYSTEM_CONSOLE = true;
+	public boolean PRINT_ON_SMARTDG_CONSOLE = true;
+
 	private MessageConsole init() {
 		ConsolePlugin consolePlugin = ConsolePlugin.getDefault();
 		IConsoleManager consoleManager = consolePlugin.getConsoleManager();
@@ -33,10 +36,16 @@ public class SmartDGConsole {
 	}
 
 	public void println(String text) {
-		out.println(text);
+		if (PRINT_ON_SYSTEM_CONSOLE)
+			System.out.println(text);
+		if (PRINT_ON_SMARTDG_CONSOLE)
+			out.println(text);
 	}
 
 	public void print(String text) {
-		out.print(text);
+		if (PRINT_ON_SYSTEM_CONSOLE)
+			System.out.print(text);
+		if (PRINT_ON_SMARTDG_CONSOLE)
+			out.print(text);
 	}
 }

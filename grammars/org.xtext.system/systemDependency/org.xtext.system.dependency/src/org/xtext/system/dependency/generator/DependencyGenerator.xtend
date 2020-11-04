@@ -34,6 +34,7 @@ import org.xtext.system.dependency.dependency.UserName
 import java.util.Map
 import java.util.HashMap
 import org.xtext.system.dependency.dependency.GUI
+import org.xtext.base.dependency.SmartDGConsole
 
 /**
  * Generates code from your model files on save.
@@ -42,6 +43,8 @@ import org.xtext.system.dependency.dependency.GUI
  */
 class DependencyGenerator extends AbstractGenerator {
 
+	var SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val dependencyBaseGenerator = new org.xtext.base.dependency.generator.DependencyGenerator;
 		var Vector<Vector<String>> dependencies = new Vector<Vector<String>>;
@@ -82,7 +85,7 @@ class DependencyGenerator extends AbstractGenerator {
 	def SystemComponentArchitecture getSystemComponentArchitecture(Resource resource) {
 		// create resource-set for the ServiceDefinition grammar
 		val injector = ComponentArchitectureActivator.getInstance().getInjector(
-			"org.xtext.system.componentArchitecture.ComponentArchitecture");
+			ComponentArchitectureActivator.ORG_ECLIPSE_SMARTMDSD_XTEXT_SYSTEM_COMPONENTARCHITECTURE_COMPONENTARCHITECTURE);
 		val resourceSet = injector.getInstance(XtextResourceSet);
 		resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 		// derive resource URI from the DomainModelsDatasheet model URI
@@ -101,7 +104,7 @@ class DependencyGenerator extends AbstractGenerator {
 				}
 			}
 		} else {
-			println("non-existing resource: " + xtextResourceUri)
+			SmartDGout.println("non-existing resource: " + xtextResourceUri)
 		}
 		return null
 	}

@@ -28,6 +28,7 @@ import org.eclipse.smartmdsd.ecore.component.componentDefinition.ComponentDefMod
 import org.eclipse.smartmdsd.ecore.component.componentDefinition.ComponentDefinition
 import org.eclipse.smartmdsd.xtext.component.componentDefinition.ui.internal.ComponentDefinitionActivator
 import org.xtext.component.dependency.dependency.UserName
+import org.xtext.base.dependency.SmartDGConsole
 
 /**
  * Generates code from your model files on save.
@@ -35,7 +36,9 @@ import org.xtext.component.dependency.dependency.UserName
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class DependencyGenerator extends AbstractGenerator {
-
+	
+	var SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val dependencyBaseGenerator = new org.xtext.base.dependency.generator.DependencyGenerator;
 		var environment = "";
@@ -78,7 +81,7 @@ class DependencyGenerator extends AbstractGenerator {
 				}
 			}
 		} else {
-			println("non-existing resource: " + xtextResourceUri)
+			SmartDGout.println("non-existing resource: " + xtextResourceUri)
 		}
 		return null
 	}

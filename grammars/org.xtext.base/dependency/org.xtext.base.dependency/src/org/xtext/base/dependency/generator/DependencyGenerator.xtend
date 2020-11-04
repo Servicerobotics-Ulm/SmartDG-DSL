@@ -62,6 +62,7 @@ import org.xtext.base.dependency.SmartDGConsole
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class DependencyGenerator extends AbstractGenerator {
+	var SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
 	String str_SMART_ROOT_ACE = "NA";
 	String str_HOME = "NA";
 	Resource resource;
@@ -108,7 +109,7 @@ class DependencyGenerator extends AbstractGenerator {
 			fixCallMode();
 		} else {
 			newfoundnoerrorflag = true;
-			System.out.println(
+			SmartDGout.println(
 				"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.fix");
 			useUserImportEnvironmentHandler = false;
 			importdisplaystr = "";
@@ -193,7 +194,7 @@ class DependencyGenerator extends AbstractGenerator {
 						EnvironmentHandler.DGEnvironment.Wiki = "USER ENVIRONMENT FOR " + username;
 						EnvironmentHandler.Read(n.location.name, username);
 						o.name = fix(o.name);
-						System.out.println("=|==|new Object       | " + o.name + "\t@" + n.location.name);
+						SmartDGout.println("=|==|new Object       | " + o.name + "\t@" + n.location.name);
 						EnvironmentHandler.Fill(Translate(o));
 						EnvironmentHandler.Save(n.location.name, username);
 						EnvironmentHandler.creatormode = false;
@@ -216,20 +217,20 @@ class DependencyGenerator extends AbstractGenerator {
 							op.name = fix(op.name);
 						}
 						EnvironmentHandler.Fill(Translate(c));
-						System.out.println("=|==|new Component    | " + c.name + "\t@" + n.location.name);
+						SmartDGout.println("=|==|new Component    | " + c.name + "\t@" + n.location.name);
 						retval = false;
 						if (newfoundnoerrorflag) {
-							System.out.println("Saving to:\"" + n.location.name + "\"");
+							SmartDGout.println("Saving to:\"" + n.location.name + "\"");
 							retval = EnvironmentHandler.Save(n.location.name, username);
 							EnvironmentHandler.creatormode = false;
 						} else {
-							System.out.println("  ERROR Validating updates to user environment for " + username);
+							SmartDGout.println("  ERROR Validating updates to user environment for " + username);
 							return null;
 						}
 						if (retval) {
-							System.out.println("  Saved Successfully");
+							SmartDGout.println("  Saved Successfully");
 						} else {
-							System.out.println("  ERROR Saving");
+							SmartDGout.println("  ERROR Saving");
 						}
 					}
 				}
@@ -244,20 +245,20 @@ class DependencyGenerator extends AbstractGenerator {
 						EnvironmentHandler.Read(n.location.name, username);
 						co.name = fix(co.name);
 						EnvironmentHandler.Fill(Translate(co));
-						System.out.println("=|==|new Connector   | " + co.name + "\t@" + n.location.name);
+						SmartDGout.println("=|==|new Connector   | " + co.name + "\t@" + n.location.name);
 						retval = false;
 						if (newfoundnoerrorflag) {
-							System.out.println("Saving to:\"" + n.location.name + "\"");
+							SmartDGout.println("Saving to:\"" + n.location.name + "\"");
 							retval = EnvironmentHandler.Save(n.location.name, username);
 							EnvironmentHandler.creatormode = false;
 						} else {
-							System.out.println("  ERROR Validating updates to user environment for " + username);
+							SmartDGout.println("  ERROR Validating updates to user environment for " + username);
 							return null;
 						}
 						if (retval) {
-							System.out.println("  Saved Successfully");
+							SmartDGout.println("  Saved Successfully");
 						} else {
-							System.out.println("  ERROR Saving");
+							SmartDGout.println("  ERROR Saving");
 						}
 					}
 				}
@@ -265,7 +266,7 @@ class DependencyGenerator extends AbstractGenerator {
 			// "New" Without user name error case
 			for (New n : resource.allContents.toIterable.filter(New)) {
 				if (! userfound) {
-					System.out.println("=|==| ERROR USING \"new\" : Undefined \"UserName\"");
+					SmartDGout.println("=|==| ERROR USING \"new\" : Undefined \"UserName\"");
 				}
 			}
 			// Fixing names in environment entries
@@ -319,7 +320,7 @@ class DependencyGenerator extends AbstractGenerator {
 				compdev.environment = fix(compdev.environment);
 				compdev.component = fix(compdev.component);
 			}
-			System.out.println(
+			SmartDGout.println(
 				"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.fixOUT");
 		}
 		return resource;
@@ -327,7 +328,7 @@ class DependencyGenerator extends AbstractGenerator {
 	// Preprocessing before code generation for "do" and "dg" models
 	def fixCallMode() {
 		newfoundnoerrorflag = true;
-		System.out.println(
+		SmartDGout.println(
 			"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.fixCallMode");
 		useUserImportEnvironmentHandler = false;
 		importdisplaystr = "";
@@ -392,20 +393,20 @@ class DependencyGenerator extends AbstractGenerator {
 				}
 			}
 			EnvironmentHandler.FillCheck(Translate(CDef));
-			System.out.println("=|==|new Component    | " + CDef.name + "\t@" + CallModeAt);
+			SmartDGout.println("=|==|new Component    | " + CDef.name + "\t@" + CallModeAt);
 			retval = false;
 			if (newfoundnoerrorflag) {
-				System.out.println("Saving to:\"" + CallModeAt + "\"");
+				SmartDGout.println("Saving to:\"" + CallModeAt + "\"");
 				retval = EnvironmentHandler.Save(CallModeAt, username);
 				EnvironmentHandler.creatormode = false;
 			} else {
-				System.out.println("  ERROR Validating updates to user environment for " + username);
+				SmartDGout.println("  ERROR Validating updates to user environment for " + username);
 				return null;
 			}
 			if (retval) {
-				System.out.println("  Saved Successfully");
+				SmartDGout.println("  Saved Successfully");
 			} else {
-				System.out.println("  ERROR Saving");
+				SmartDGout.println("  ERROR Saving");
 			}
 		}
 		// "dg" model preprocessing
@@ -459,11 +460,11 @@ class DependencyGenerator extends AbstractGenerator {
 				}
 			}
 			for (dep : SDep) {
-				System.out.print("Dependency: ");
+				SmartDGout.print("Dependency: ");
 				for (item : dep) {
-					System.out.print("\t" + item);
+					SmartDGout.print("\t" + item);
 				}
-				System.out.println("");
+				SmartDGout.println("");
 			}
 			for (dep : SDep) {
 				newfoundnoerrorflag = true;
@@ -476,7 +477,7 @@ class DependencyGenerator extends AbstractGenerator {
 				tmpCon = new SmartDGConnector();
 				tmpCon.Name = dep.firstElement();
 				if (! EnvironmentHandler.Check(tmpCon)) {
-					System.out.println("------------ERROR !! \"" + "Connector " + dep.firstElement() +
+					SmartDGout.println("------------ERROR !! \"" + "Connector " + dep.firstElement() +
 						"\" not found in Environment connector list");
 					newfoundnoerrorflag = false;
 					return null;
@@ -485,14 +486,14 @@ class DependencyGenerator extends AbstractGenerator {
 				tmpO = new SmartDGObject();
 				tmpO.Name(dep.get(3));
 				if (! EnvironmentHandler.Check(tmpO)) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Connector " + dep.firstElement() + " tries to handle object \"" +
 							tmpO.Name + "\" which is not found in Environment object list");
 					newfoundnoerrorflag = false;
 					return null;
 				}
 				if (! EnvironmentHandler.Check(tmpCon, tmpO)) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Connector " + dep.firstElement() + " does not handle object \"" +
 							tmpO.Name);
 					newfoundnoerrorflag = false;
@@ -515,7 +516,7 @@ class DependencyGenerator extends AbstractGenerator {
 									if (DObject.equals(dos))
 										fromentryfound = true;
 				if (! fromentryfound) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Component/OutputPort/DependencyObject Entry not found for [" +
 							FromComponentSourceName + ":" + FromComponentName + "][" + FromPortName + "][" + DObject +
 							"]");
@@ -531,7 +532,7 @@ class DependencyGenerator extends AbstractGenerator {
 									if (DObject.equals(dos))
 										toentryfound = true;
 				if (! toentryfound) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Component/InputPort/DependencyObject Entry not found for [" +
 							ToComponentSourceName + ":" + ToComponentName + "][" + ToPortName + "][" + DObject + "]");
 					newfoundnoerrorflag = false;
@@ -539,7 +540,7 @@ class DependencyGenerator extends AbstractGenerator {
 				}
 			}
 		}
-		System.out.println(
+		SmartDGout.println(
 			"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.fixCallModeOUT");
 	}
 
@@ -549,15 +550,15 @@ class DependencyGenerator extends AbstractGenerator {
 		tmpO.Wiki = obj.wiki;
 		if (obj.isMulti == 'true') {
 			tmpO.isMulti(true);
-			System.out.print("------" + obj.name + "\t[M]");
+			SmartDGout.print("------" + obj.name + "\t[M]");
 		} else {
 			tmpO.isMulti(false);
-			System.out.print("------" + obj.name);
+			SmartDGout.print("------" + obj.name);
 		}
 		if (obj.wiki !== null) {
-			System.out.println("   Wiki:" + obj.wiki);
+			SmartDGout.println("   Wiki:" + obj.wiki);
 		} else {
-			System.out.println(" ");
+			SmartDGout.println(" ");
 		}
 		tmpO.Type("Boolean"); // #TODO Other types to be added later
 		return (tmpO);
@@ -565,13 +566,13 @@ class DependencyGenerator extends AbstractGenerator {
 
 	def SmartDGComponent Translate(DependencyComponent comp) {
 		tmpC = new SmartDGComponent();
-		System.out.println("--Component" + comp.name);
+		SmartDGout.println("--Component" + comp.name);
 		tmpC.Name(comp.name);
-		System.out.print("--InputPorts:");
+		SmartDGout.print("--InputPorts:");
 		for (DependencyPort ip : comp.inputPorts) {
 			tmpP = new SmartDGPort();
 			tmpP.Name(ip.name);
-			System.out.print("\t" + ip.name + "[");
+			SmartDGout.print("\t" + ip.name + "[");
 			for (String oi : ip.objinstances) {
 				tmpO = new SmartDGObject();
 				tmpO.Name(oi);
@@ -584,7 +585,7 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				if (! objfound) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Component " + comp.name + "'s Port " + ip.name +
 							" has candidate object \"" + oi + "\" which is not found in Environment object list");
 					{
@@ -593,18 +594,18 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				tmpP.DGObjectCandidates.add(oi);
-				System.out.print("  " + oi);
+				SmartDGout.print("  " + oi);
 			}
-			System.out.print("  ]");
+			SmartDGout.print("  ]");
 			tmpC.InputPorts.add(tmpP);
 		}
-		System.out.println(" ");
-		System.out.print("--OutputPorts:");
+		SmartDGout.println(" ");
+		SmartDGout.print("--OutputPorts:");
 		for (DependencyPort op : comp.outputPorts) {
 			tmpP = new SmartDGPort();
 			tmpP.Name(op.name);
 			objfound = true;
-			System.out.print("\t" + op.name + "[");
+			SmartDGout.print("\t" + op.name + "[");
 			for (String oi : op.objinstances) {
 				tmpO = new SmartDGObject();
 				tmpO.Name(oi);
@@ -616,7 +617,7 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				if (! objfound) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Component " + comp.name + "'s Port " + op.name +
 							" has candidate object \"" + oi + "\" which is not found in Environment object list");
 					{
@@ -625,9 +626,9 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				tmpP.DGObjectCandidates.add(oi);
-				System.out.print("  " + oi);
+				SmartDGout.print("  " + oi);
 			}
-			System.out.print("  ]");
+			SmartDGout.print("  ]");
 			tmpC.OutputPorts.add(tmpP);
 		}
 		tmpC.Wiki = comp.wiki;
@@ -636,14 +637,14 @@ class DependencyGenerator extends AbstractGenerator {
 
 	def SmartDGComponent Translate(ComponentDefinition compdef) {
 		tmpC = new SmartDGComponent();
-		System.out.println("--Component" + compdef.name);
+		SmartDGout.println("--Component" + compdef.name);
 		tmpC.Name(compdef.name);
-		System.out.print("--InputPorts:");
+		SmartDGout.print("--InputPorts:");
 
 		for (ip : compdef.elements.filter(InputPort)) {
 			tmpP = new SmartDGPort();
 			tmpP.Name(ip.name);
-			System.out.print("\t" + ip.name + "[");
+			SmartDGout.print("\t" + ip.name + "[");
 			for (obj : ip.extensions.filter(ComponentDependencyObject)) {
 				val oi = obj.name;
 				tmpO = new SmartDGObject();
@@ -657,7 +658,7 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				if (! objfound) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Component " + compdef.name + "'s Port " + ip.name +
 							" has candidate object \"" + oi + "\" which is not found in Environment object list");
 					{
@@ -666,18 +667,18 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				tmpP.DGObjectCandidates.add(oi);
-				System.out.print("  " + oi);
+				SmartDGout.print("  " + oi);
 			}
-			System.out.print("  ]");
+			SmartDGout.print("  ]");
 			tmpC.InputPorts.add(tmpP);
 		}
-		System.out.println(" ");
-		System.out.print("--OutputPorts:");
+		SmartDGout.println(" ");
+		SmartDGout.print("--OutputPorts:");
 		for (op : compdef.elements.filter(OutputPort)) {
 			tmpP = new SmartDGPort();
 			tmpP.Name(op.name);
 			objfound = true;
-			System.out.print("\t" + op.name + "[");
+			SmartDGout.print("\t" + op.name + "[");
 			for (obj : op.extensions.filter(ComponentDependencyObject)) {
 				val oi = obj.name;
 				tmpO = new SmartDGObject();
@@ -690,7 +691,7 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				if (! objfound) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! " + "Component " + compdef.name + "'s Port " + op.name +
 							" has candidate object \"" + oi + "\" which is not found in Environment object list");
 					{
@@ -699,9 +700,9 @@ class DependencyGenerator extends AbstractGenerator {
 					}
 				}
 				tmpP.DGObjectCandidates.add(oi);
-				System.out.print("  " + oi);
+				SmartDGout.print("  " + oi);
 			}
-			System.out.print("  ]");
+			SmartDGout.print("  ]");
 			tmpC.OutputPorts.add(tmpP);
 		}
 		tmpC.Wiki = "";
@@ -723,7 +724,7 @@ class DependencyGenerator extends AbstractGenerator {
 				}
 			}
 			if (! objfound) {
-				System.out.println("------------ERROR !! " + "Connector " + con.name + " has candidate object \"" + oi +
+				SmartDGout.println("------------ERROR !! " + "Connector " + con.name + " has candidate object \"" + oi +
 					"\" which is not found in Environment object list");
 				{
 					newfoundnoerrorflag = false;
@@ -737,27 +738,27 @@ class DependencyGenerator extends AbstractGenerator {
 	// "do" model doGenerate method calls this
 	def doGenerateComponentCall(Resource resourceComponentCall, String user, String environment, String boxpath,
 		String at, ComponentDefinition component) {
-		System.out.println(
+		SmartDGout.println(
 			"===============================================================================base.dependency.componentCall IN");
 		CDef = component;
 		var boolean ComponentDependencyObjectFound = false;
-		System.out.println("Component: " + CDef.name);
+		SmartDGout.println("Component: " + CDef.name);
 		for (port : CDef.elements.filter(InputPort)) {
-			System.out.println("------Input Port: " + port.name);
+			SmartDGout.println("------Input Port: " + port.name);
 			for (obj : port.extensions.filter(ComponentDependencyObject)) {
 				ComponentDependencyObjectFound = true;
-				System.out.println("------------object: " + obj.name)
+				SmartDGout.println("------------object: " + obj.name)
 			}
 		}
 		for (port : CDef.elements.filter(OutputPort)) {
-			System.out.println("------Output Port: " + port.name);
+			SmartDGout.println("------Output Port: " + port.name);
 			for (obj : port.extensions.filter(ComponentDependencyObject)) {
 				ComponentDependencyObjectFound = true;
-				System.out.println("------------object: " + obj.name)
+				SmartDGout.println("------------object: " + obj.name)
 			}
 		}
 		if (ComponentDependencyObjectFound == true) {
-			System.out.println(
+			SmartDGout.println(
 				"======================================= ComponentDependencyObjects found in component ports.");
 			ComponentCallMode = true;
 			SystemCallMode = false;
@@ -767,16 +768,16 @@ class DependencyGenerator extends AbstractGenerator {
 			CallModeAt = at;
 			doGenerateBase(resourceComponentCall);
 		} else {
-			System.out.println(
+			SmartDGout.println(
 				"======================================= No ComponentDependencyObjects specified in component ports.");
-			System.out.println(
+			SmartDGout.println(
 				"===============================================================================base.dependency.componentCall OUT");
 		}
 	}
 	// "dg" model doGenerate method calls this
 	def doGenerateSystemCall(Resource resourceSystemCall, String user, String environment, String boxpath, String at,
 		SystemComponentArchitecture system, Vector<Vector<String>> dependencies, Map<String, Vector<Integer>> guis) {
-		System.out.println(
+		SmartDGout.println(
 			"===============================================================================base.dependency.systemCall IN");
 		SDef = system;
 		SDep = dependencies;
@@ -785,12 +786,12 @@ class DependencyGenerator extends AbstractGenerator {
 		CompMap.clear();
 		GUIS.clear();
 		GUIS = guis;
-		System.out.println("System Name: " + SDef.name);
+		SmartDGout.println("System Name: " + SDef.name);
 		for (componentObj : SDef.components) {
 			val component = componentObj.getComponent();
 			CompMap.put(componentObj.name, component.name);
-			System.out.print("Component Instance: " + componentObj.name + "  instantiates: " + component.name);
-			System.out.println(" GUI: " + GUIS.get(componentObj.name));
+			SmartDGout.print("Component Instance: " + componentObj.name + "  instantiates: " + component.name);
+			SmartDGout.println(" GUI: " + GUIS.get(componentObj.name));
 		}
 		for (connection : SDef.connections) {
 			SystemDependencyConnectionsFound = true;
@@ -820,7 +821,7 @@ class DependencyGenerator extends AbstractGenerator {
 			SCon.add(c);
 		}
 		for (con : SCon) {
-			System.out.println(
+			SmartDGout.println(
 				"Connection: " + con.get(0) + ": " + con.get(1) + "." + con.get(2) + "--" + con.get(3) + "-->" +
 					con.get(4) + "." + con.get(5));
 		}
@@ -833,10 +834,10 @@ class DependencyGenerator extends AbstractGenerator {
 			CallModeAt = at;
 			doGenerateBase(resourceSystemCall);
 		} else {
-			System.out.println(
+			SmartDGout.println(
 				"======================================= No connections found in SystemComponentArchitecture");
 		}
-		System.out.println(
+		SmartDGout.println(
 			"===============================================================================base.dependency.systemCall OUT");
 	}
 	// "de" model doGenerate method
@@ -847,74 +848,68 @@ class DependencyGenerator extends AbstractGenerator {
 	}
 	// All "do", "dg" and "de" model doGenerate methods calls this method after corresponding Resource object setup
 	def doGenerateBase(Resource resourcein) {
-		
-		
-		var SmartDGConsole SmartDGout = new SmartDGConsole("SmartDG");
 		SmartDGout.println("SmartDG | doGenerateBase | IN");
-		
-		
-		
 		str_SMART_ROOT_ACE = System.getenv("SMART_ROOT_ACE");
 		str_HOME = System.getenv("HOME");
 		if (str_SMART_ROOT_ACE === null) {
-			System.out.println("=|==|==|==|==|==XXXX $SMART_ROOT_ACE not found");
+			SmartDGout.println("=|==|==|==|==|==XXXX $SMART_ROOT_ACE not found");
 			return;
 		}
 		if (str_HOME === null) {
-			System.out.println("=|==|==|==|==|==XXXX $HOME not found");
+			SmartDGout.println("=|==|==|==|==|==XXXX $HOME not found");
 			return;
 		}
-		System.out.println(
+		SmartDGout.println(
 			"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.main");
-		System.out.println("SMART_ROOT_ACE: " + str_SMART_ROOT_ACE);
-		System.out.println("HOME: " + str_HOME);
+		SmartDGout.println("SMART_ROOT_ACE: " + str_SMART_ROOT_ACE);
+		SmartDGout.println("HOME: " + str_HOME);
 		resource = fix(resourcein);
 		if (! newfoundnoerrorflag) {
-			System.out.println("=|==|==|==|==|==XXXX ResourceFix ERROR");
+			SmartDGout.println("=|==|==|==|==|==XXXX ResourceFix ERROR");
 			return;
 		}
-		System.out.println(
+		SmartDGout.println(
 			"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.main");
 		firstentry = true;
 		for (Environment environment : resource.allContents.toIterable.filter(Environment)) {
 			EnvironmentHandler = new SmartDGEnvironmentHandler();
 			EnvironmentHandler.creatormode = true;
-			if(firstentry) System.out.println("------------------------------------------------Environments");
+			if(firstentry) SmartDGout.println("------------------------------------------------Environments");
 			firstentry = false;
 			EnvironmentHandler.DGEnvironment.Name = environment.name;
 			EnvironmentHandler.DGEnvironment.Wiki = environment.wiki;
-			System.out.print("------------------------------------------------" + environment.name);
+			SmartDGout.print("------------------------------------------------" + environment.name);
 			if (environment.wiki !== null) {
-				System.out.println("   Wiki:" + environment.wiki);
+				SmartDGout.println("   Wiki:" + environment.wiki);
 			} else {
-				System.out.println(" ");
+				SmartDGout.println(" ");
 			}
-			System.out.println("------------DependencyObjects");
+			SmartDGout.println("------------DependencyObjects");
 			for (DependencyObject obj : environment.objects) {
 				EnvironmentHandler.Fill(Translate(obj));
 			}
-			System.out.println("------------SmartDGComponents");
+			SmartDGout.println("------------SmartDGComponents");
 			for (DependencyComponent comp : environment.components) {
 				EnvironmentHandler.Fill(Translate(comp));
-				System.out.println(" ");
+				SmartDGout.println(" ");
 			}
-			System.out.println("------------Connectors");
+			SmartDGout.println("------------Connectors");
 			for (DependencyConnectors con : environment.connectors) {
 				EnvironmentHandler.Fill(Translate(con));
-				System.out.println(con.name);
+				SmartDGout.println(con.name);
 			}
-			System.out.println("------------Box Locations");
+			SmartDGout.println("------------Box Locations");
 			for (At loc : environment.location) {
 				EnvironmentHandler.Fill(loc.name);
-				System.out.println(loc.name);
+				SmartDGout.println(loc.name);
 			}
 			for (At loc : environment.location) {
-				System.out.println("\"" + loc.name + "\"");
+				SmartDGout.println("\"" + loc.name + "\"");
 				retval = EnvironmentHandler.Save(loc.name, environment.name);
 				if (retval) {
-					System.out.println("  Saved Successfully");
+					SmartDGout.println("  Saved Successfully");
 				} else {
-					System.out.println("  ERROR Saving");
+					SmartDGout.println("  ERROR Saving");
 				}
 			}
 			EnvironmentHandler.creatormode = false;
@@ -924,37 +919,37 @@ class DependencyGenerator extends AbstractGenerator {
 		for (SystemProject project : resource.allContents.toIterable.filter(SystemProject)) {
 			var Map<String, String> tmpMap = new HashMap<String, String>();
 			EnvironmentHandler = new SmartDGEnvironmentHandler();
-			if(firstentry) System.out.println("------------------------------------------------SystemProjects");
+			if(firstentry) SmartDGout.println("------------------------------------------------SystemProjects");
 			firstentry = false;
-			System.out.println("------------------------------------------------" + project.name);
+			SmartDGout.println("------------------------------------------------" + project.name);
 			if (project.wiki !== null) {
-				System.out.println("------------Wiki		 :" + project.wiki);
+				SmartDGout.println("------------Wiki		 :" + project.wiki);
 			}
-			System.out.println("------------Environment  :" + "\"" + project.environment + "\"");
-			System.out.println("------------BoxLocation  :" + "\"" + project.boxpath + "\"");
+			SmartDGout.println("------------Environment  :" + "\"" + project.environment + "\"");
+			SmartDGout.println("------------BoxLocation  :" + "\"" + project.boxpath + "\"");
 			retval = EnvironmentHandler.Read(project.boxpath, project.environment);
 			enverr = retval;
 			if (!retval) {
-				System.out.println("------------ERROR !! Unable to Read Environment");
+				SmartDGout.println("------------ERROR !! Unable to Read Environment");
 				return;
 			}
 			if (enverr) {
-				System.out.println("------------Dependencies");
+				SmartDGout.println("------------Dependencies");
 				tmpMap = SystemProjectCompMap.get(project.name);
 				for (Dependency de : project.dependencies) {
 					if (de.wiki !== null) {
-						System.out.println(
+						SmartDGout.println(
 							"------------" + de.name + " " + de.fn + "." + de.fp + "--" + de.o + "-->" + de.tn + "." +
 								de.tp + " Wiki:" + de.wiki);
 					} else {
-						System.out.println(
+						SmartDGout.println(
 							"------------" + de.name + " " + de.fn + "." + de.fp + "--" + de.o + "-->" + de.tn + "." +
 								de.tp);
 					}
 					tmpCon = new SmartDGConnector();
 					tmpCon.Name(de.name);
 					if (! EnvironmentHandler.Check(tmpCon)) {
-						System.out.println(
+						SmartDGout.println(
 							"------------ERROR !! Connector \"" + de.name + "\" not found in Environment \"" +
 								project.environment + "\" at \"" + project.boxpath + "\"");
 						return;
@@ -963,7 +958,7 @@ class DependencyGenerator extends AbstractGenerator {
 					tmpO = new SmartDGObject();
 					tmpO.Name(de.o);
 					if (! EnvironmentHandler.Check(tmpO)) {
-						System.out.println(
+						SmartDGout.println(
 							"------------ERROR !! Object \"" + de.o + "\" not found in Environment \"" +
 								project.environment + "\" at \"" + project.boxpath + "\"");
 						return;
@@ -972,7 +967,7 @@ class DependencyGenerator extends AbstractGenerator {
 					tmpC = new SmartDGComponent();
 					tmpC.Name(tmpMap.get(de.fn));
 					if (! EnvironmentHandler.Check(tmpC)) {
-						System.out.println(
+						SmartDGout.println(
 							"------------ERROR !! Component \"" + de.fn + "\" not found in Environment \"" +
 								project.environment + "\" at \"" + project.boxpath + "\"");
 						return;
@@ -981,7 +976,7 @@ class DependencyGenerator extends AbstractGenerator {
 					tmpP.Name(de.fp);
 					tmpC.OutputPorts.add(tmpP);
 					if (! EnvironmentHandler.Check(tmpC)) {
-						System.out.println(
+						SmartDGout.println(
 							"------------ERROR !! OutputPort \"" + de.fp + "\" not found in Component \"" + de.fn +
 								"\" in Environment \"" + project.environment + "\" at \"" + project.boxpath + "\"");
 						return;
@@ -990,7 +985,7 @@ class DependencyGenerator extends AbstractGenerator {
 					tmpC = new SmartDGComponent();
 					tmpC.Name(tmpMap.get(de.tn));
 					if (! EnvironmentHandler.Check(tmpC)) {
-						System.out.println(
+						SmartDGout.println(
 							"------------ERROR !! Component \"" + de.tn + "\" not found in Environment \"" +
 								project.environment + "\" at \"" + project.boxpath + "\"");
 						return;
@@ -999,19 +994,19 @@ class DependencyGenerator extends AbstractGenerator {
 					tmpP.Name(de.tp);
 					tmpC.InputPorts.add(tmpP);
 					if (! EnvironmentHandler.Check(tmpC)) {
-						System.out.println(
+						SmartDGout.println(
 							"------------ERROR !! InputPort \"" + de.tp + "\" not found in Component \"" + de.tn +
 								"\" in Environment \"" + project.environment + "\" at \"" + project.boxpath + "\"");
 						return;
 					}
 				}
 			}
-			System.out.println("------------GUI");
+			SmartDGout.println("------------GUI");
 			for (GUI g : project.gui) {
 				if (g.wiki !== null) {
-					System.out.println("------------" + g.name + " (" + g.x + ", " + g.y + ")" + " Wiki:" + g.wiki);
+					SmartDGout.println("------------" + g.name + " (" + g.x + ", " + g.y + ")" + " Wiki:" + g.wiki);
 				} else {
-					System.out.println("------------" + g.name + " (" + g.x + ", " + g.y + ")");
+					SmartDGout.println("------------" + g.name + " (" + g.x + ", " + g.y + ")");
 				}
 			}
 			SystemProjectHandler = new SmartDGSystemProjectHandler();
@@ -1036,12 +1031,12 @@ class DependencyGenerator extends AbstractGenerator {
 				tmpG.y = g.y;
 				SystemProjectHandler.Fill(tmpG);
 			}
-			System.out.println("------------Box Locations");
+			SmartDGout.println("------------Box Locations");
 			for (BoxLocation loc : project.location) {
 				SystemProjectHandler.Fill(loc.name);
 			}
 			for (BoxLocation loc : project.location) {
-				System.out.println("\"" + loc.name + "\"");
+				SmartDGout.println("\"" + loc.name + "\"");
 				if (loc.launchflag == "true") {
 					SystemProjectHandler.launchflag = true;
 				}
@@ -1057,21 +1052,21 @@ class DependencyGenerator extends AbstractGenerator {
 				retval = SystemProjectHandler.Save(loc.name, project.name);
 				SystemProjectHandler.ResetFlags();
 				if (retval) {
-					System.out.println("  Saved Successfully");
+					SmartDGout.println("  Saved Successfully");
 				} else {
-					System.out.println("  ERROR Saving");
+					SmartDGout.println("  ERROR Saving");
 				}
 			}
 		}
 		if (SystemCallMode) {
 			EnvironmentHandler = new SmartDGEnvironmentHandler();
-			if(firstentry) System.out.println("------------------------------------------------SystemProjects");
-			System.out.println("------------------------------------------------" + SDef.name);
-			System.out.println("------------Environment  :" + "\"" + "USER_" + CallModeUser + "\"");
-			System.out.println("------------BoxLocation  :" + "\"" + CallModeAt + "\"");
+			if(firstentry) SmartDGout.println("------------------------------------------------SystemProjects");
+			SmartDGout.println("------------------------------------------------" + SDef.name);
+			SmartDGout.println("------------Environment  :" + "\"" + "USER_" + CallModeUser + "\"");
+			SmartDGout.println("------------BoxLocation  :" + "\"" + CallModeAt + "\"");
 			retval = EnvironmentHandler.Read(CallModeAt, "USER_" + CallModeUser);
 			if (!retval) {
-				System.out.println("------------ERROR !! Unable to Read Environment");
+				SmartDGout.println("------------ERROR !! Unable to Read Environment");
 				return;
 			}
 			SystemProjectHandler = new SmartDGSystemProjectHandler();
@@ -1097,15 +1092,15 @@ class DependencyGenerator extends AbstractGenerator {
 				SystemProjectHandler.Fill(tmpG);
 			}
 			SystemProjectHandler.Fill(CallModeAt);
-			System.out.println("\"" + CallModeAt + "\"");
+			SmartDGout.println("\"" + CallModeAt + "\"");
 			SystemProjectHandler.importflag = true;
 			SystemProjectHandler.buildflag = true;
 			retval = SystemProjectHandler.Save(CallModeAt, SDef.name);
 			SystemProjectHandler.ResetFlags();
 			if (retval) {
-				System.out.println("  Saved Successfully");
+				SmartDGout.println("  Saved Successfully");
 			} else {
-				System.out.println("  ERROR Saving");
+				SmartDGout.println("  ERROR Saving");
 			}
 		}
 
@@ -1117,36 +1112,36 @@ class DependencyGenerator extends AbstractGenerator {
 			ComponentDevelopmentHandler.DGComponentDevelopment.EnvironmentBoxLocation = compdev.boxpath;
 			ComponentDevelopmentHandler.DGComponentDevelopment.Wiki = compdev.wiki;
 			EnvironmentHandler = new SmartDGEnvironmentHandler();
-			if(firstentry) System.out.println("------------------------------------------------ComponentDevelopment");
+			if(firstentry) SmartDGout.println("------------------------------------------------ComponentDevelopment");
 			firstentry = false;
-			System.out.println("------------------------------------------------" + compdev.name);
+			SmartDGout.println("------------------------------------------------" + compdev.name);
 			if (compdev.wiki !== null) {
-				System.out.println("------------Wiki		 :" + compdev.wiki);
+				SmartDGout.println("------------Wiki		 :" + compdev.wiki);
 			}
-			System.out.println("------------Environment  :" + "\"" + compdev.environment + "\"");
-			System.out.println("------------BoxLocation  :" + "\"" + compdev.boxpath + "\"");
+			SmartDGout.println("------------Environment  :" + "\"" + compdev.environment + "\"");
+			SmartDGout.println("------------BoxLocation  :" + "\"" + compdev.boxpath + "\"");
 			retval = EnvironmentHandler.Read(compdev.boxpath, compdev.environment);
 			enverr = retval;
 			if (!retval) {
-				System.out.println("------------ERROR !! Unable to Read Environment");
+				SmartDGout.println("------------ERROR !! Unable to Read Environment");
 				return;
 			}
 			if (enverr) {
-				System.out.println("------------Component \"" + compdev.component + "\"");
+				SmartDGout.println("------------Component \"" + compdev.component + "\"");
 				if (! EnvironmentHandler.isComponent(compdev.component)) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! Component \"" + compdev.component + "\" not found in Environment \"" +
 							compdev.environment + "\" at \"" + compdev.boxpath + "\"");
 					return;
 				} else {
 					ComponentDevelopmentHandler.DGComponentDevelopment.DGComponent = EnvironmentHandler.getComponent(
 						compdev.component);
-					System.out.println("------------Box Locations");
+					SmartDGout.println("------------Box Locations");
 					for (BoxLocation loc : compdev.location) {
 						ComponentDevelopmentHandler.Fill(loc.name);
 					}
 					for (BoxLocation loc : compdev.location) {
-						System.out.println("\"" + loc.name + "\"");
+						SmartDGout.println("\"" + loc.name + "\"");
 						if (loc.launchflag == "true") {
 							ComponentDevelopmentHandler.launchflag = true;
 						}
@@ -1162,9 +1157,9 @@ class DependencyGenerator extends AbstractGenerator {
 						retval = ComponentDevelopmentHandler.Save(loc.name, compdev.name);
 						ComponentDevelopmentHandler.ResetFlags();
 						if (retval) {
-							System.out.println("  Saved Successfully");
+							SmartDGout.println("  Saved Successfully");
 						} else {
-							System.out.println("  ERROR Saving");
+							SmartDGout.println("  ERROR Saving");
 						}
 					}
 				}
@@ -1178,42 +1173,42 @@ class DependencyGenerator extends AbstractGenerator {
 			ComponentDevelopmentHandler.DGComponentDevelopment.Wiki = "Component Call Mode Init Wiki";
 			EnvironmentHandler = new SmartDGEnvironmentHandler();
 			if (firstentry)
-				System.out.println(
+				SmartDGout.println(
 					"-----------------------------------------------ComponentCallMode-ComponentDevelopment");
-			System.out.println("------------------------------------------------" + CDef.name);
-			System.out.println(
+			SmartDGout.println("------------------------------------------------" + CDef.name);
+			SmartDGout.println(
 				"------------Environment  :" + "\"" + ComponentDevelopmentHandler.DGComponentDevelopment.Environment +
 					"\"");
-			System.out.println(
+			SmartDGout.println(
 				"------------BoxLocation  :" + "\"" +
 					ComponentDevelopmentHandler.DGComponentDevelopment.EnvironmentBoxLocation + "\"");
 			retval = EnvironmentHandler.Read(CallModeAt, "USER_" + CallModeUser);
 			enverr = retval;
 			if (!retval) {
-				System.out.println("------------ERROR !! Unable to Read Environment");
+				SmartDGout.println("------------ERROR !! Unable to Read Environment");
 				return;
 			}
 			if (enverr) {
-				System.out.println("------------Component \"" + CDef.name + "\"");
+				SmartDGout.println("------------Component \"" + CDef.name + "\"");
 				if (! EnvironmentHandler.isComponent(CDef.name)) {
-					System.out.println(
+					SmartDGout.println(
 						"------------ERROR !! Component \"" + CDef.name + "\" not found in Environment \"" + "USER_" +
 							CallModeUser + "\" at \"" + CallModeAt + "\"");
 					return;
 				} else {
 					ComponentDevelopmentHandler.DGComponentDevelopment.DGComponent = EnvironmentHandler.
 						getComponent(CDef.name);
-					System.out.println("------------Box Locations");
+					SmartDGout.println("------------Box Locations");
 					ComponentDevelopmentHandler.Fill(CallModeAt);
-					System.out.println("\"" + CallModeAt + "\"");
+					SmartDGout.println("\"" + CallModeAt + "\"");
 					ComponentDevelopmentHandler.importflag = true;
 					ComponentDevelopmentHandler.buildflag = true;
 					retval = ComponentDevelopmentHandler.Save(CallModeAt, CDef.name);
 					ComponentDevelopmentHandler.ResetFlags();
 					if (retval) {
-						System.out.println("  Saved Successfully");
+						SmartDGout.println("  Saved Successfully");
 					} else {
-						System.out.println("  ERROR Saving");
+						SmartDGout.println("  ERROR Saving");
 					}
 				}
 			}
