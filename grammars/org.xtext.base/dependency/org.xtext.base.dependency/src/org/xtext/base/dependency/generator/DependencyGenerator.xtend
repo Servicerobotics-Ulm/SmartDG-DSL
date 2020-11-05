@@ -1,18 +1,56 @@
 //================================================================
 //
-//  Copyright (C) 2017 Vineet Nagrath, Alex Lotz
+//  Copyright (c) 2020 Technische Hochschule Ulm, Servicerobotics Ulm, Germany
 //
-//        nagrath@hs-ulm.de		
-//        lotz@hs-ulm.de
-//
-//        Servicerobotik Ulm
+//        Servicerobotik Ulm 
 //        Christian Schlegel
 //        Ulm University of Applied Sciences
 //        Prittwitzstr. 10
 //        89075 Ulm
 //        Germany
 //
-//  This file is part of the SmartMDSD Toolchain V3. 
+//	  http://www.servicerobotik-ulm.de/
+//
+//  This file is part of the SmartDG Dependency Graph extension for SmartMDSD Toolchain.
+//
+//  Contributors:
+//	Vineet Nagrath	   :	Vineet.Nagrath@thu.de
+//	Alex Lotz	   	   :	Alex.Lotz@thu.de
+//	Christian Schlegel :	Christian.Schlegel@thu.de
+//
+//  Licence:
+//
+//  BSD 3-Clause License
+//  
+//  Copyright (c) 2019, Servicerobotics Ulm
+//  All rights reserved.
+//  
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//  
+//  * Redistributions of source code must retain the above copyright notice, this
+//    list of conditions and the following disclaimer.
+//  
+//  * Redistributions in binary form must reproduce the above copyright notice,
+//    this list of conditions and the following disclaimer in the documentation
+//    and/or other materials provided with the distribution.
+//  
+//  * Neither the name of the copyright holder nor the names of its
+//    contributors may be used to endorse or promote products derived from
+//    this software without specific prior written permission.
+//  
+//  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+//  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+//  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+//  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+//  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+//  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+//  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+//  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+//  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+//  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//  https://opensource.org/licenses/BSD-3-Clause
 //
 //================================================================
 package org.xtext.base.dependency.generator
@@ -98,10 +136,12 @@ class DependencyGenerator extends AbstractGenerator {
 	String CallModeEnvironment;
 	String CallModeBoxPath;
 	String CallModeAt;
+
 	// Replaces non alphanumeric characters (except "_") in String in with the character "x"
 	def String fix(String in) {
 		return in.replaceAll("[^a-zA-Z0-9_]", "x");
 	}
+
 	// Preprocessing of Resource object before code generation for "de" model
 	def Resource fix(Resource resource) {
 		if (ComponentCallMode || SystemCallMode) {
@@ -325,6 +365,7 @@ class DependencyGenerator extends AbstractGenerator {
 		}
 		return resource;
 	}
+
 	// Preprocessing before code generation for "do" and "dg" models
 	def fixCallMode() {
 		newfoundnoerrorflag = true;
@@ -735,6 +776,7 @@ class DependencyGenerator extends AbstractGenerator {
 		}
 		return tmpCon;
 	}
+
 	// "do" model doGenerate method calls this
 	def doGenerateComponentCall(Resource resourceComponentCall, String user, String environment, String boxpath,
 		String at, ComponentDefinition component) {
@@ -774,6 +816,7 @@ class DependencyGenerator extends AbstractGenerator {
 				"===============================================================================base.dependency.componentCall OUT");
 		}
 	}
+
 	// "dg" model doGenerate method calls this
 	def doGenerateSystemCall(Resource resourceSystemCall, String user, String environment, String boxpath, String at,
 		SystemComponentArchitecture system, Vector<Vector<String>> dependencies, Map<String, Vector<Integer>> guis) {
@@ -840,12 +883,14 @@ class DependencyGenerator extends AbstractGenerator {
 		SmartDGout.println(
 			"===============================================================================base.dependency.systemCall OUT");
 	}
+
 	// "de" model doGenerate method
 	override void doGenerate(Resource resourcein, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		ComponentCallMode = false;
 		SystemCallMode = false;
 		doGenerateBase(resourcein);
 	}
+
 	// All "do", "dg" and "de" model doGenerate methods calls this method after corresponding Resource object setup
 	def doGenerateBase(Resource resourcein) {
 		SmartDGout.println("SmartDG | doGenerateBase | IN");
