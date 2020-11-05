@@ -1,6 +1,0 @@
-ServiceDefRepository DGBasicService version 1 . 0
-{
-	ForkingServiceDefinition DGService {
-		PushPattern <DataType=DGBasicService.DGBasicCommObject>
-	}
-}
