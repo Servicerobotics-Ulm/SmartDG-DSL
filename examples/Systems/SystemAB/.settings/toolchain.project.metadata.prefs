@@ -1,0 +1,6 @@
+SystemAB/BaseURI/value/0=http\://www.servicerobotik-ulm.de
+SystemAB/Homepage/value/2=http\://www.servicerobotik-ulm.de
+SystemAB/Purpose/value/3=Example system given in SmartDG-DSL/examples folder
+SystemAB/Supplier/value/1=Servicerobotics Ulm, Germany
+SystemAB/shortDescription=An example system part of examples at SmartDG-DSL/examples
+eclipse.preferences.version=1

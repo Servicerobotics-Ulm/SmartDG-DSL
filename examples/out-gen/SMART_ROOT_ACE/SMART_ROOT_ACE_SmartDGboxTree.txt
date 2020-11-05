@@ -1,0 +1,14 @@
+.
+├── SmartDG_Environments
+│   └── DemoSmartSoftBase
+│       ├── DemoSmartSoftBase.dgenv
+│       ├── src
+│       └── src-gen
+│           ├── SmartDGEnvironment_DemoSmartSoftBase.h
+│           ├── SmartDGTransferFunction_Component_Camera.h
+│           ├── SmartDGTransferFunction_Component_LocalxUser.h
+│           ├── SmartDGTransferFunction_Component_MapMaker.h
+│           └── SmartDGTransferFunction_Component_RemotexUser.h
+└── Tree.txt
+
+4 directories, 7 files

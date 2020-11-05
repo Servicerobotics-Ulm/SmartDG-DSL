@@ -1,0 +1,6 @@
+ComponentB/BaseURI/value/0=http\://www.servicerobotik-ulm.de
+ComponentB/Homepage/value/2=http\://www.servicerobotik-ulm.de
+ComponentB/Purpose/value/3=Example component given in SmartDG-DSL/examples folder
+ComponentB/Supplier/value/1=Servicerobotics Ulm, Germany
+ComponentB/shortDescription=An example component part of examples at SmartDG-DSL/examples
+eclipse.preferences.version=1

@@ -1,0 +1,6 @@
+DGBasicService/BaseURI/value/0=http\://www.servicerobotik-ulm.de
+DGBasicService/Homepage/value/2=http\://www.servicerobotik-ulm.de
+DGBasicService/Purpose/value/3=Used by Examples given in SmartDG-DSL/examples folder
+DGBasicService/Supplier/value/1=Servicerobotics Ulm, Germany
+DGBasicService/shortDescription=DGBasicService is a service example used by SmartDG-DSL/examples
+eclipse.preferences.version=1
