@@ -12,7 +12,7 @@ Require-Bundle: javax.inject,
  org.eclipse.e4.core.di.annotations,
  org.eclipse.ui,
  org.eclipse.ui.console
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: javax.annotation;version="1.2.0"
 Automatic-Module-Name: org.SmartDG.DSL.view
 Bundle-Vendor: Servicerobotics Ulm, Germany
