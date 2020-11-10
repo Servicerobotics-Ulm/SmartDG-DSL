@@ -197,7 +197,8 @@ public class SmartDGComponentDevelopmentHandler {
 
 	public boolean Read() {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGComponentDevelopment.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGComponentDevelopment.class.getPackageName(),
+					SmartDGComponentDevelopment.class.getClassLoader());
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			DGComponentDevelopment = (SmartDGComponentDevelopment) jaxbUnmarshaller.unmarshal(TargetFile);
 		} catch (JAXBException e) {
@@ -228,7 +229,8 @@ public class SmartDGComponentDevelopmentHandler {
 
 	public boolean Save() {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGComponentDevelopment.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGComponentDevelopment.class.getPackageName(),
+					SmartDGComponentDevelopment.class.getClassLoader());			
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(DGComponentDevelopment, TargetFile);

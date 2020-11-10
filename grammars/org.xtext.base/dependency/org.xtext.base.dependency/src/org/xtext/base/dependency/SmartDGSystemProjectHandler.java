@@ -168,7 +168,8 @@ public class SmartDGSystemProjectHandler {
 
 	public boolean Read() {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGSystemProject.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGSystemProject.class.getPackageName(),
+					SmartDGSystemProject.class.getClassLoader());
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			DGSystemProject = (SmartDGSystemProject) jaxbUnmarshaller.unmarshal(TargetFile);
 		} catch (JAXBException e) {
@@ -199,7 +200,8 @@ public class SmartDGSystemProjectHandler {
 
 	public boolean Save() {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGSystemProject.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGSystemProject.class.getPackageName(),
+					SmartDGSystemProject.class.getClassLoader());
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(DGSystemProject, TargetFile);
