@@ -51,7 +51,7 @@
 //
 //  https://opensource.org/licenses/BSD-3-Clause
 //
-//================================================================  
+//================================================================            
 Environment DemoSmartSoftBase	Wiki:"Demo SmartSoft Environment"	{ 
 	Object "OverHeat"
 	Object "Privacy"	isMulti:"true"

@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.jface;bundle-version="3.19.0",
  javax.activation,
  javax.xml.bind,
- com.sun.xml.bind
+ org.eclipse.persistence.moxy;bundle-version="2.7.3"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.xtext.base.dependency.parser.antlr,
  org.xtext.base.dependency.validation,

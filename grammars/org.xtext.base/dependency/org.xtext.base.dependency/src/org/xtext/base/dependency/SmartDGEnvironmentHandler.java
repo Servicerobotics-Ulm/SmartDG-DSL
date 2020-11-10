@@ -347,7 +347,8 @@ public class SmartDGEnvironmentHandler {
 
 	public boolean Read() {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGEnvironment.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGEnvironment.class.getPackageName(),
+					SmartDGEnvironment.class.getClassLoader());			
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			DGEnvironment = (SmartDGEnvironment) jaxbUnmarshaller.unmarshal(TargetFile);
 		} catch (JAXBException e) {
@@ -380,7 +381,8 @@ public class SmartDGEnvironmentHandler {
 
 	public boolean Save() {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGEnvironment.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(SmartDGEnvironment.class.getPackageName(),
+					SmartDGEnvironment.class.getClassLoader());
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			jaxbMarshaller.marshal(DGEnvironment, TargetFile);
