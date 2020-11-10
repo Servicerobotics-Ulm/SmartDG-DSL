@@ -93,6 +93,7 @@ import java.util.Map
 import java.util.HashMap
 import org.xtext.base.dependency.dependency.CIM
 import org.xtext.base.dependency.SmartDGConsole
+import java.io.File
 
 /**
  * Generates code from your model files on save.
@@ -896,13 +897,22 @@ class DependencyGenerator extends AbstractGenerator {
 		SmartDGout.println("SmartDG | doGenerateBase | IN");
 		str_SMART_ROOT_ACE = System.getenv("SMART_ROOT_ACE");
 		str_HOME = System.getenv("HOME");
-		if (str_SMART_ROOT_ACE === null) {
-			SmartDGout.println("=|==|==|==|==|==XXXX $SMART_ROOT_ACE not found");
-			return;
-		}
 		if (str_HOME === null) {
 			SmartDGout.println("=|==|==|==|==|==XXXX $HOME not found");
 			return;
+		}
+		if (str_SMART_ROOT_ACE === null) {
+			SmartDGout.println("=|==|==|==|==|==XXXX $SMART_ROOT_ACE not found");
+			str_SMART_ROOT_ACE = str_HOME + "/SOFTWARE/smartsoft";
+			var File d = new File(str_SMART_ROOT_ACE); 
+	        if (d.mkdir()) { 
+ 				SmartDGout.println("=|==|==|==|==|==XXXX Using SMART_ROOT_ACE as: "+str_SMART_ROOT_ACE); 
+	        } 
+	        else { 
+	            SmartDGout.println("=|==|==|==|==|==XXXX Directory cannot be created: "+str_SMART_ROOT_ACE);
+	            SmartDGout.println("=|==|==|==|==|==XXXX Exiting");
+	            return;
+	        }			
 		}
 		SmartDGout.println(
 			"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.main");
