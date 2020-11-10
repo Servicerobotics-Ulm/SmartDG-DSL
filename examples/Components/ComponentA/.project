@@ -3,7 +3,7 @@
 	<name>ComponentA</name>
 	<comment></comment>
 	<projects>
-		<project>DGBasicService</project>
+		<project>DGService</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

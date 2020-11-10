@@ -13,12 +13,12 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef DGBASICSERVICE_DGBASICCOMMOBJECT_DATA_H_
-#define DGBASICSERVICE_DGBASICCOMMOBJECT_DATA_H_
+#ifndef DGSERVICE_DGBASICCOMMOBJECT_DATA_H_
+#define DGSERVICE_DGBASICCOMMOBJECT_DATA_H_
 
 
 
-namespace DGBasicServiceIDL 
+namespace DGServiceIDL 
 {
 	struct DGBasicCommObject
 	{
@@ -26,4 +26,4 @@ namespace DGBasicServiceIDL
   	};
 };
 
-#endif /* DGBASICSERVICE_DGBASICCOMMOBJECT_DATA_H_ */
+#endif /* DGSERVICE_DGBASICCOMMOBJECT_DATA_H_ */

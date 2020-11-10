@@ -15,12 +15,12 @@
 #--------------------------------------------------------------------------
 
 # SmartXml is a default dependency of each CommunicationObject
-LIST(APPEND DGBasicService_DEPENDENCIES SmartXml)
+LIST(APPEND DGService_DEPENDENCIES SmartXml)
 
 # modelled CommunicationObject-dependencies are added here (if there are any)
 
 # these are the dependencies that have been added manually within the CMakeLists.txt file
 # (e.g. added by SMART_ADD_UTILITY)
-LIST(APPEND DGBasicService_DEPENDENCIES @DGBasicService_LOCAL_DEPENDENCIES@)
+LIST(APPEND DGService_DEPENDENCIES @DGService_LOCAL_DEPENDENCIES@)
 
-LIST(REMOVE_DUPLICATES DGBasicService_DEPENDENCIES)
+LIST(REMOVE_DUPLICATES DGService_DEPENDENCIES)

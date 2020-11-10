@@ -13,11 +13,11 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#include "DGBasicService/DGBasicCommObjectACE.hh"
+#include "DGService/DGBasicCommObjectACE.hh"
 #include <ace/SString.h>
 
 // serialization operator for element DGBasicCommObject
-ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGBasicServiceIDL::DGBasicCommObject &data)
+ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGServiceIDL::DGBasicCommObject &data)
 {
 	ACE_CDR::Boolean good_bit = true;
 	// serialize list-element data
@@ -27,7 +27,7 @@ ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGBasicServiceIDL::DGBasic
 }
 
 // de-serialization operator for element DGBasicCommObject
-ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGBasicServiceIDL::DGBasicCommObject &data)
+ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGServiceIDL::DGBasicCommObject &data)
 {
 	ACE_CDR::Boolean good_bit = true;
 	// deserialize type element data
@@ -37,13 +37,13 @@ ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGBasicServiceIDL::DGBasicCommObj
 }
 
 // serialization operator for CommunicationObject DGBasicCommObject
-ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGBasicService::DGBasicCommObject &obj)
+ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGService::DGBasicCommObject &obj)
 {
 	return cdr << obj.get();
 }
 
 // de-serialization operator for CommunicationObject DGBasicCommObject
-ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGBasicService::DGBasicCommObject &obj)
+ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGService::DGBasicCommObject &obj)
 {
 	return cdr >> obj.set();
 }

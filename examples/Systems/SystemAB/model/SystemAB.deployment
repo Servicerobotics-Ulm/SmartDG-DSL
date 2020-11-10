@@ -62,4 +62,7 @@ DeploymentModel SystemAB using ComponentArchitecture SystemAB
 	NamingService
 	{
 		deploy-to LocalhostTarget }
+ComponentArtefact A1 deploy-to LocalhostTarget
+ComponentArtefact A2 deploy-to LocalhostTarget
+ComponentArtefact B1 deploy-to LocalhostTarget
 }

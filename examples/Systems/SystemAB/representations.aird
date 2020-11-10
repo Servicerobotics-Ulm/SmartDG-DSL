@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:componentArchitecture="http://www.eclipse.org/smartmdsd/system/componentArchitecture" xmlns:deployment="http://www.eclipse.org/smartmdsd/system/deployment" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:targetPlatform="http://www.eclipse.org/smartmdsd/system/targetPlatform" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_D5keIB-AEeuPOuibLya-hA" selectedViews="_D6sfgB-AEeuPOuibLya-hA _EBwJwB-AEeuPOuibLya-hA _EDKfAB-AEeuPOuibLya-hA" version="14.3.0.201909031200">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:componentArchitecture="http://www.eclipse.org/smartmdsd/system/componentArchitecture" xmlns:deployment="http://www.eclipse.org/smartmdsd/system/deployment" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:targetPlatform="http://www.eclipse.org/smartmdsd/system/targetPlatform" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_D5keIB-AEeuPOuibLya-hA" selectedViews="_D6sfgB-AEeuPOuibLya-hA _EBwJwB-AEeuPOuibLya-hA _EDKfAB-AEeuPOuibLya-hA" version="14.3.1.202003261200">
     <semanticResources>model/SystemAB.activityArch</semanticResources>
     <semanticResources>model/SystemAB.causeEffectChain</semanticResources>
     <semanticResources>model/SystemAB.componentArch</semanticResources>
@@ -10,6 +10,10 @@
     <semanticResources>model/SystemAB.target</semanticResources>
     <semanticResources>model/SystemAB.de</semanticResources>
     <semanticResources>model/SystemAB.dg</semanticResources>
+    <semanticResources>platform:/resource/ComponentA/model/ComponentA.component</semanticResources>
+    <semanticResources>platform:/resource/ComponentB/model/ComponentB.component</semanticResources>
+    <semanticResources>platform:/resource/DGService/model/DGBasicService.services</semanticResources>
+    <semanticResources>platform:/resource/DGService/model/DGBasicService.types</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_D6sfgB-AEeuPOuibLya-hA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.smartmdsd.sirius.system.deployment.design/description/deployment.odesign#//@ownedViewpoints[name='DeploymentViewpoint']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EBKT4B-AEeuPOuibLya-hA" name="SystemABDeployment" repPath="#_EAMqkB-AEeuPOuibLya-hA" changeId="9e6c2057-5cfb-4bf2-8db0-c5437d3d9c4d">
@@ -19,14 +23,14 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_EBwJwB-AEeuPOuibLya-hA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.smartmdsd.sirius.system.componentArchitecture.design/description/componentArchitecture.odesign#//@ownedViewpoints[name='SystemArchitectureViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EC9Dox-AEeuPOuibLya-hA" name="SystemABComponentArchitecture" repPath="#_EC5ZQB-AEeuPOuibLya-hA" changeId="2262e9f2-9296-42d2-b4b8-6c5953851a48">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EC9Dox-AEeuPOuibLya-hA" name="SystemABComponentArchitecture" repPath="#_EC5ZQB-AEeuPOuibLya-hA" changeId="261053cc-ac77-4e3c-a477-334ff01e43be">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.smartmdsd.sirius.system.componentArchitecture.design/description/componentArchitecture.odesign#//@ownedViewpoints[name='SystemArchitectureViewpoint']/@ownedRepresentations[name='SystemArchitectureDiagram']"/>
         <target xmi:type="componentArchitecture:SystemComponentArchitecture" href="model/SystemAB.componentArch#SystemAB"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_EDKfAB-AEeuPOuibLya-hA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.smartmdsd.sirius.system.targetPlatform.design/description/targetPlatform.odesign#//@ownedViewpoints[name='TargetPlatformViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EEG6Mx-AEeuPOuibLya-hA" name="SystemABTargetPlatform" repPath="#_EEFFAB-AEeuPOuibLya-hA" changeId="d0f17b36-5b7d-47af-8c47-39b5036c69d9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EEG6Mx-AEeuPOuibLya-hA" name="SystemABTargetPlatform" repPath="#_EEFFAB-AEeuPOuibLya-hA" changeId="ce65981b-982a-40d8-bd9d-6944b5e8c693">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.smartmdsd.sirius.system.targetPlatform.design/description/targetPlatform.odesign#//@ownedViewpoints[name='TargetPlatformViewpoint']/@ownedRepresentations[name='TargetPlatformDiagram']"/>
         <target xmi:type="targetPlatform:TargetPlatformModel" href="model/SystemAB.target#SystemAB"/>
       </ownedRepresentationDescriptors>
@@ -160,7 +164,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_frlXEB-BEeuPOuibLya-hA" type="3012" element="_frfQcB-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_frlXEx-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_frlXFB-BEeuPOuibLya-hA" x="-2" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_frlXFB-BEeuPOuibLya-hA" x="-2"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_frnMQB-BEeuPOuibLya-hA" type="3014" element="_frf3gB-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_frnMQR-BEeuPOuibLya-hA" fontName="Ubuntu"/>
@@ -171,7 +175,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_frl-IB-BEeuPOuibLya-hA" type="3012" element="_frf3gR-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_frl-Ix-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_frl-JB-BEeuPOuibLya-hA" x="19" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_frl-JB-BEeuPOuibLya-hA" x="19"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_frnMQx-BEeuPOuibLya-hA" type="3014" element="_frf3gh-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_frnMRB-BEeuPOuibLya-hA" fontName="Ubuntu"/>
@@ -191,7 +195,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_jgbhsB-BEeuPOuibLya-hA" type="3012" element="_jgUM8h-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_jgbhsx-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_jgbhtB-BEeuPOuibLya-hA" x="-2" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jgbhtB-BEeuPOuibLya-hA" x="-2"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_jgcIwh-BEeuPOuibLya-hA" type="3014" element="_jgUM8x-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_jgcIwx-BEeuPOuibLya-hA" fontName="Ubuntu"/>
@@ -202,7 +206,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_jgbhtR-BEeuPOuibLya-hA" type="3012" element="_jgU0AB-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_jgcIwB-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_jgcIwR-BEeuPOuibLya-hA" x="19" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jgcIwR-BEeuPOuibLya-hA" x="19"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_jgcIxR-BEeuPOuibLya-hA" type="3014" element="_jgU0AR-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_jgcIxh-BEeuPOuibLya-hA" fontName="Ubuntu"/>
@@ -222,7 +226,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_0y3S0B-BEeuPOuibLya-hA" type="3012" element="_0yth0R-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_0y3S0x-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_0y3S1B-BEeuPOuibLya-hA" x="-21" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_0y3S1B-BEeuPOuibLya-hA" x="-21"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_0y4g8B-BEeuPOuibLya-hA" type="3014" element="_0yth0h-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_0y4g8R-BEeuPOuibLya-hA" fontName="Ubuntu"/>
@@ -233,7 +237,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_0y354B-BEeuPOuibLya-hA" type="3012" element="_0yuI4B-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_0y354x-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_0y355B-BEeuPOuibLya-hA" x="19" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_0y355B-BEeuPOuibLya-hA" x="19"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_0y4g8x-BEeuPOuibLya-hA" type="3014" element="_0yuI4R-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_0y4g9B-BEeuPOuibLya-hA" fontName="Ubuntu"/>
@@ -428,7 +432,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_M4NXoB-BEeuPOuibLya-hA" type="3012" element="_M3Um0B-BEeuPOuibLya-hA">
             <children xmi:type="notation:Node" xmi:id="_M4OlwB-BEeuPOuibLya-hA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_M4OlwR-BEeuPOuibLya-hA" x="-7" y="-13"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_M4OlwR-BEeuPOuibLya-hA" x="-7"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_M4UsYB-BEeuPOuibLya-hA" type="3005" element="_M3VN4B-BEeuPOuibLya-hA">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_M4UsYR-BEeuPOuibLya-hA" fontName="Ubuntu"/>

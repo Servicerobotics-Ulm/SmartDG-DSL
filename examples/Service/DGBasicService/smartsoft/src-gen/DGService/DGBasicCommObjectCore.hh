@@ -13,25 +13,25 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef DGBASICSERVICE_DGBASICCOMMOBJECT_CORE_H_
-#define DGBASICSERVICE_DGBASICCOMMOBJECT_CORE_H_
+#ifndef DGSERVICE_DGBASICCOMMOBJECT_CORE_H_
+#define DGSERVICE_DGBASICCOMMOBJECT_CORE_H_
 
-#include "DGBasicService/DGBasicCommObjectData.hh"
+#include "DGService/DGBasicCommObjectData.hh"
 
 #include <iostream>
 #include <string>
 #include <list>
 
-namespace DGBasicService {
+namespace DGService {
 	
 class DGBasicCommObjectCore {
 protected:
 	// data structure
-	DGBasicServiceIDL::DGBasicCommObject idl_DGBasicCommObject;
+	DGServiceIDL::DGBasicCommObject idl_DGBasicCommObject;
 	
 public:
 	// give a publicly accessible type-name for the template parameter IDL
-	typedef DGBasicServiceIDL::DGBasicCommObject DATATYPE;
+	typedef DGServiceIDL::DGBasicCommObject DATATYPE;
 	
 	#ifdef ENABLE_HASH
 		static size_t generateDataHash(const DATATYPE &);
@@ -51,7 +51,7 @@ public:
 	operator const DATATYPE&() const { return idl_DGBasicCommObject; }
 	DATATYPE& set() { return idl_DGBasicCommObject; }
 
-	static inline std::string identifier(void) { return "DGBasicService::DGBasicCommObject"; }
+	static inline std::string identifier(void) { return "DGService::DGBasicCommObject"; }
 	
 	// helper method to easily implement output stream in derived classes
 	void to_ostream(std::ostream &os = std::cout) const;
@@ -69,5 +69,5 @@ public:
 	inline DGBasicCommObjectCore& setData(const int &data) { idl_DGBasicCommObject.data = data; return *this; }
 };
 
-} /* namespace DGBasicService */
-#endif /* DGBASICSERVICE_DGBASICCOMMOBJECT_CORE_H_ */
+} /* namespace DGService */
+#endif /* DGSERVICE_DGBASICCOMMOBJECT_CORE_H_ */

@@ -1,0 +1,26 @@
+/** 
+\class DGService::DGBasicCommObjectCore
+
+Structure of Communication Object:
+- data: Int32 
+
+
+
+
+@defgroup DGService
+@ingroup commObjGroup
+@{
+\page DGServicePage DGService
+Class Reference: DGService
+<hr>
+
+@section DGBasicCommObject DGBasicCommObject
+- data: Int32  
+
+Class Reference: DGService::DGBasicCommObjectCore
+<hr>
+
+
+@}
+*/
+

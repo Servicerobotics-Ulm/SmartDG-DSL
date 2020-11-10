@@ -13,10 +13,10 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#include "DGBasicService/DGBasicCommObjectCore.hh"
+#include "DGService/DGBasicCommObjectCore.hh"
 
 // serialization/deserialization operators
-//#include "DGBasicService/DGBasicCommObjectACE.hh"
+//#include "DGService/DGBasicCommObjectACE.hh"
 
 // include the hash.idl containing the hash constant
 #include "hash.hh"
@@ -31,11 +31,11 @@
 	#include <boost/functional/hash.hpp>
 #endif
 
-namespace DGBasicService 
+namespace DGService 
 {
 	const char* DGBasicCommObjectCore::getCompiledHash()
 	{
-		return DGBasicServiceIDL::REPO_HASH;
+		return DGServiceIDL::REPO_HASH;
 	}
 	
 	void DGBasicCommObjectCore::getAllHashValues(std::list<std::string> &hashes)
@@ -115,10 +115,10 @@ namespace DGBasicService
 		// start with a default internal buffer size(will automatically grow if needed)
 		ACE_OutputCDR cdr(ACE_DEFAULT_CDR_BUFSIZE);
 		
-		DGBasicServiceIDL::HashList hashes;
+		DGServiceIDL::HashList hashes;
 		getAllHashValues(hashes);
 		cdr << static_cast<ACE_CDR::Long>(hashes.size());
-		for(DGBasicServiceIDL::HashList::const_iterator it=hashes.begin(); it!=hashes.end(); it++)
+		for(DGServiceIDL::HashList::const_iterator it=hashes.begin(); it!=hashes.end(); it++)
 		{
 			cdr << ACE_CString(it->c_str());
 		}
@@ -144,7 +144,7 @@ namespace DGBasicService
 	{
 		ACE_InputCDR cdr(msg);
 	
-		DGBasicServiceIDL::HashList hashes;
+		DGServiceIDL::HashList hashes;
 		ACE_CDR::Long hashes_size;
 		cdr >> hashes_size;
 		for(int i=0; i<hashes_size; ++i) 
@@ -168,4 +168,4 @@ namespace DGBasicService
 	#endif
 	}
 	*/
-} /* namespace DGBasicService */
+} /* namespace DGService */

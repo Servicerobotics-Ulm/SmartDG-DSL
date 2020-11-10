@@ -13,23 +13,23 @@
 // Please do not modify this file. It will be re-generated
 // running the code generator.
 //--------------------------------------------------------------------------
-#ifndef DGBASICSERVICE_DGBASICCOMMOBJECT_ACE_H_
-#define DGBASICSERVICE_DGBASICCOMMOBJECT_ACE_H_
+#ifndef DGSERVICE_DGBASICCOMMOBJECT_ACE_H_
+#define DGSERVICE_DGBASICCOMMOBJECT_ACE_H_
 
-#include "DGBasicService/DGBasicCommObject.hh"
+#include "DGService/DGBasicCommObject.hh"
 
 #include <ace/CDR_Stream.h>
 
 // serialization operator for DataStructure DGBasicCommObject
-ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGBasicServiceIDL::DGBasicCommObject &data);
+ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGServiceIDL::DGBasicCommObject &data);
 
 // de-serialization operator for DataStructure DGBasicCommObject
-ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGBasicServiceIDL::DGBasicCommObject &data);
+ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGServiceIDL::DGBasicCommObject &data);
 
 // serialization operator for CommunicationObject DGBasicCommObject
-ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGBasicService::DGBasicCommObject &obj);
+ACE_CDR::Boolean operator<<(ACE_OutputCDR &cdr, const DGService::DGBasicCommObject &obj);
 
 // de-serialization operator for CommunicationObject DGBasicCommObject
-ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGBasicService::DGBasicCommObject &obj);
+ACE_CDR::Boolean operator>>(ACE_InputCDR &cdr, DGService::DGBasicCommObject &obj);
 
-#endif /* DGBASICSERVICE_DGBASICCOMMOBJECT_ACE_H_ */
+#endif /* DGSERVICE_DGBASICCOMMOBJECT_ACE_H_ */

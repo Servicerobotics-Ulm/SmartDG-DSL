@@ -19,7 +19,7 @@
 #include <string>
 #include <list>
 
-namespace DGBasicServiceIDL
+namespace DGServiceIDL
 {
 	const char * const REPO_HASH = "@HASH_VALUE@";
 	typedef std::list<std::string> HashList;

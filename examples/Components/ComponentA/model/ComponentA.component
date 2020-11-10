@@ -58,11 +58,11 @@ Activity Activity1
 	{
 		InputPortLink A_In { oversamplingOk undersamplingOk }
 	}
-	InputPort A_In implements DGBasicService.DGService {
+	InputPort A_In implements DGService.DGService {
 		ComponentDependencyObject "Privacy"
 		ComponentDependencyObject "OverHeat"
 	}
-	OutputPort A_Out implements DGBasicService.DGService realizedBy Activity1 {
+	OutputPort A_Out implements DGService.DGService realizedBy Activity1 {
 		ComponentDependencyObject "Privacy"
 		ComponentDependencyObject "OverHeat"
 	} 

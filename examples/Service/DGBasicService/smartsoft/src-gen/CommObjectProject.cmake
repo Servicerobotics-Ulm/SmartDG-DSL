@@ -14,4 +14,4 @@
 # running the code generator.
 #--------------------------------------------------------------------------
 
-PROJECT(DGBasicService VERSION 1.0.0)
+PROJECT(DGService VERSION 1.0.0)
