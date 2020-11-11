@@ -37,3 +37,4 @@ Export-Package: org.xtext.base.dependency.parser.antlr,
  org.xtext.base.dependency.scoping
 Import-Package: org.apache.commons.io;version="1.9.0",
  org.apache.log4j
+ClassPath: eclipselink.jar
