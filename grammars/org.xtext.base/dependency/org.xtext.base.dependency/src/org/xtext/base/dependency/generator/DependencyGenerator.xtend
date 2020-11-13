@@ -904,15 +904,14 @@ class DependencyGenerator extends AbstractGenerator {
 		if (str_SMART_ROOT_ACE === null) {
 			SmartDGout.println("=|==|==|==|==|==XXXX $SMART_ROOT_ACE not found");
 			str_SMART_ROOT_ACE = str_HOME + "/SOFTWARE/smartsoft";
-			var File d = new File(str_SMART_ROOT_ACE); 
-	        if (d.mkdir()) { 
- 				SmartDGout.println("=|==|==|==|==|==XXXX Using SMART_ROOT_ACE as: "+str_SMART_ROOT_ACE); 
-	        } 
-	        else { 
-	            SmartDGout.println("=|==|==|==|==|==XXXX Directory cannot be created: "+str_SMART_ROOT_ACE);
-	            SmartDGout.println("=|==|==|==|==|==XXXX Exiting");
-	            return;
-	        }			
+			var File d = new File(str_SMART_ROOT_ACE);
+			if (d.mkdir()) {
+				SmartDGout.println("=|==|==|==|==|==XXXX Using SMART_ROOT_ACE as: " + str_SMART_ROOT_ACE);
+			} else {
+				SmartDGout.println("=|==|==|==|==|==XXXX Directory cannot be created: " + str_SMART_ROOT_ACE);
+				SmartDGout.println("=|==|==|==|==|==XXXX Exiting");
+				return;
+			}
 		}
 		SmartDGout.println(
 			"=|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==|==base.dependency.main");
@@ -1152,10 +1151,11 @@ class DependencyGenerator extends AbstractGenerator {
 			SystemProjectHandler.buildflag = true;
 			retval = SystemProjectHandler.Save(CallModeAt, SDef.name);
 			SystemProjectHandler.ResetFlags();
+			var String SourceFolder = CallModeAt + "/SmartDGbox/SmartDG_Systems/" + SDef.name;
 			if (retval) {
-				SmartDGout.println("  Saved Successfully");
+				SmartDGout.println("  Saved Successfully @ " + SourceFolder);
 			} else {
-				SmartDGout.println("  ERROR Saving");
+				SmartDGout.println("  ERROR Saving @ " + SourceFolder);
 			}
 		}
 
@@ -1260,10 +1260,11 @@ class DependencyGenerator extends AbstractGenerator {
 					ComponentDevelopmentHandler.buildflag = true;
 					retval = ComponentDevelopmentHandler.Save(CallModeAt, CDef.name);
 					ComponentDevelopmentHandler.ResetFlags();
+					var String SourceFolder = CallModeAt + "/SmartDGbox/SmartDG_ComponentDevelopment/" + CDef.name;
 					if (retval) {
-						SmartDGout.println("  Saved Successfully");
+						SmartDGout.println("  Saved Successfully @ " + SourceFolder);
 					} else {
-						SmartDGout.println("  ERROR Saving");
+						SmartDGout.println("  ERROR Saving @ " + SourceFolder);
 					}
 				}
 			}

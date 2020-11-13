@@ -355,6 +355,7 @@ class SmartDGdslGen {
 			mkdir -p build
 			rm -r build
 			mkdir -p build
+			echo "build/" > .gitignore
 			cd build
 			cmake ..
 			make
