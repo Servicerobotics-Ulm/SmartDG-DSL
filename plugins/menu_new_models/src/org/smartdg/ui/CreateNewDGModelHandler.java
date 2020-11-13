@@ -64,6 +64,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.resources.IResource;
@@ -106,6 +107,17 @@ public class CreateNewDGModelHandler extends AbstractHandler {
 				"Do you want to create SmartDG model files with default contents for project \n" + project.getName());
 
 		if (yescreate) {
+			String modelfoldername = "model/";
+			IFolder folder = project.getFolder(modelfoldername);
+			if (!folder.exists()) {
+				try {
+					folder.create(true, true, null);
+					SmartDGout.println("SmartDG | Create New DGModel Handler | " + "model folder was created.");
+				} catch (CoreException e) {
+					e.printStackTrace();
+				}
+			}
+
 			List<String> ModelTypes = new ArrayList<>();
 			List<String> ModelTypesWiki = new ArrayList<>();
 			List<String> ModelTypesDefaultContents = new ArrayList<>();
