@@ -101,7 +101,16 @@ public class CreateNewDGModelHandler extends AbstractHandler {
 
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		IResource resource = getSelectedResource(window);
-		IProject project = resource.getProject();
+		IProject project = null;
+		try {
+			project = resource.getProject();
+		} catch (Exception e1) {
+			SmartDGout.println("SmartDG | Create New DGModel Handler | XXXX Error Accessing Project Resources !!");
+			SmartDGout.println(
+					"SmartDG | Create New DGModel Handler | XXXX Pop and use this menu on Project root folder or on one of the model files.");
+			SmartDGout.println("SmartDG | Create New DGModel Handler | OUT");
+			return null;
+		}
 
 		boolean yescreate = MessageDialog.openConfirm(window.getShell(), "SmartDG",
 				"Do you want to create SmartDG model files with default contents for project \n" + project.getName());
