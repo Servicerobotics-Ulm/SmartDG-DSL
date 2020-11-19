@@ -2,7 +2,7 @@
 <feature
       id="org.SmartDG.DSL.feature"
       label="SmartDG.DSL"
-      version="0.1.0.qualifier"
+      version="1.0.0.qualifier"
       provider-name="Servicerobotics Ulm, Germany">
 
    <description url="http://www.servicerobotik-ulm.de/">
